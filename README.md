@@ -1,1 +1,1 @@
-# StackOverFlow Clone Group Project
+# SlackOverFlow Clone Group Project
