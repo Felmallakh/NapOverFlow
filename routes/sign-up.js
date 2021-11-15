@@ -2,7 +2,6 @@ const express = require('express');
 const bcrypt = require('bcryptjs');
 const csrf = require('csurf');
 const { check, validationResult } = require('express-validator');
-const { defaultValueSchemable } = require('sequelize/types/lib/utils');
 
 const csrfProtection = csrf({ cookie: true });
 const router = express.Router();
