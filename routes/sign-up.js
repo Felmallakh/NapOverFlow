@@ -3,10 +3,11 @@ const bcrypt = require('bcryptjs');
 const csrf = require('csurf');
 const { check, validationResult } = require('express-validator');
 
+const { User } = require('../db/models');
+const { loginUser } = require('../auth');
+
 const csrfProtection = csrf({ cookie: true });
 const router = express.Router();
-
-
 
 // async function to hash the password given through the sign-up page
 async function hashPassword(password) {
@@ -50,5 +51,26 @@ const userValidators = [
 router.get('/sign-up', csrfProtection, (req, res) => {
     res.render('sign-up', { csrfToken: req.csrfToken(), title: 'Sign-Up', create: {} });
 });
+
+router.post('/sign-up', csrfProtection, userValidators, asyncHandler(async (req, res) => {
+    const { displayName, email, password } = req.body;
+
+    const newUser = User.build({ displayName, email, });
+
+    const validatorErrors = validationResult(req);
+
+    if (validatorErrors.isEmpty()) {
+        const hashedPassword = hashPassword(password);
+        newUser.hashedPassword = hashedPassword;
+        await newUser.save();
+        loginUser(req, res, newUser);
+        res.redirect('/');
+    } else {
+        const errors = validatorErrors.array().map(error => error.msg);
+        res.render('sign-up', {
+            title: 'Sign-Up', create: newUser, errors, csrfToken: req.csrfToken(),
+        });
+    }
+}));
 
 module.exports = router;
