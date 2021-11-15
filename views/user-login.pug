@@ -1,13 +1,20 @@
 extends layout.pug
 
 block content
-    +validationErrorSummary(errors)
-    form(action='/user/login' method='post')
+    if errors
+        div
+            p The following error occured:
+            ul
+                each error in errors
+                li=error
+    form(action='/login' method='post')
         input(type='hidden' name='_csrf' value=csrfToken)
-        +field('Email Address', 'emailAddress', emailAddress)
-        +field('Password', 'password', null, 'password')
-        div(class='py-4')
-           button(type='submit' class='btn btn-primary') Login
-           a(href='/' class='btn btn-warning ml-2') Cancel
+        label(for='email') Email Address
+        input(type='email' name='email')
+        label(for='password') Password
+        input(type='text' name='password')
+        div
+           button(name='log-in') Login
+           a(href='/' ) Cancel
      div
-        p: a(href='/user/register') Create an account?
+        p: a(href='/register') Create an new account
