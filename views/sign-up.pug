@@ -1,0 +1,18 @@
+extends layout
+
+block content
+    if errors
+        div(class='alert alert-danger' role='alert')
+            p The following error(s) occurred:
+            ul
+                each error in errors
+                li= error
+    form(action='/user/sign-up', method='post')
+        input(type='hidden', name='_csrf', value=csrfToken)
+        label(for='displayName') Display name
+        input(type='text', name='displayName', value=create.displayName)
+        label(for='email') Email
+        input(type='email', name='email', value=create.email)
+        label(for='password') Password
+        input(type='text', name='password')
+        button(name='sign-up') Sign up
