@@ -2,12 +2,12 @@ extends layout
 
 block content
     if errors
-        div(class='alert alert-danger' role='alert')
+        div
             p The following error(s) occurred:
             ul
                 each error in errors
                 li= error
-    form(action='/user/sign-up', method='post')
+    form(action='/sign-up', method='post')
         input(type='hidden', name='_csrf', value=csrfToken)
         label(for='displayName') Display name
         input(type='text', name='displayName', value=create.displayName)

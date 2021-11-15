@@ -7,7 +7,7 @@ const { loginUser, logoutUser } = require('../auth');
 
 
 
-router.get('/user/login', csrfProtection,(req, res)=> {
+router.get('/login', csrfProtection,(req, res)=> {
   res.render('user-login',{
     title: 'Login',
     csrfToken: req.csrfToken(),
@@ -24,7 +24,7 @@ const loginValidators = [
     .withMessage('Please provide a value for Password'),
 ];
 
-router.post('/user/login',csrfProtection,loginValidators,
+router.post('/login',csrfProtection,loginValidators,
 asyncHandler(async(req,res )=> {
   const{
     emailAddress,
@@ -56,7 +56,7 @@ asyncHandler(async(req,res )=> {
   });
 }));
 
-router.post('/user/logout',(req,res)=>{
+router.post('/logout',(req,res)=>{
   logoutUser(req,res);
   res.redirect('/');
 });
