@@ -8,6 +8,7 @@ const session = require('express-session');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
+const { restoreUser } = require("./auth");
 
 const app = express();
 
@@ -19,6 +20,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(restoreUser);
 
 // set up session middleware
 const store = new SequelizeStore({ db: sequelize });
@@ -38,9 +40,15 @@ store.sync();
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
+
 // catch 404 and forward to error handler
-app.use(function (req, res, next) {
-  next(createError(404));
+app.use(function (err, req, res, next) {
+  const err = new Error("The requested page couldn't be found");
+  if(err.status === 404) {
+    res.status(404);
+    res.render('page-not-found', { title: " Page not found" })
+  };
+  next(err);
 });
 
 // error handler
