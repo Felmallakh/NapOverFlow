@@ -48,11 +48,11 @@ const userValidators = [
         .withMessage('Please provide a password')
 ];
 
-router.get('/sign-up', csrfProtection, (req, res) => {
+router.get('/', csrfProtection, (req, res) => {
     res.render('sign-up', { csrfToken: req.csrfToken(), title: 'Sign-Up', create: {} });
 });
 
-router.post('/sign-up', csrfProtection, userValidators, asyncHandler(async (req, res) => {
+router.post('/', csrfProtection, userValidators, asyncHandler(async (req, res) => {
     const { displayName, email, password } = req.body;
 
     const newUser = User.build({ displayName, email, });
