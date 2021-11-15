@@ -1,9 +1,13 @@
 const db = require ("./db/models");
+const session = require('express-session');
 
 const loginUser = ( req, res, user ) => {
     req.session.auth = {
         userId: user.id
     }
+    // req.session.save(() => {
+    //   res.redirect('/')
+    // })
 }
 
 const logoutUser = ( req, res, user ) => {
@@ -21,7 +25,7 @@ const requireAuth = ( req, res, next ) => {
 const restoreUser = async (req, res, next) => {
   // Log the session object to the console
   // to assist with debugging.
-  console.log(req.session);
+  // console.log(req.session);
 
   if (req.session.auth) {
     // If we had an auth key, that means we are logged in in. We pull the userId out of auth, then find the user record associated with it.
@@ -54,4 +58,3 @@ module.exports = {
     requireAuth,
     restoreUser
 };
-
