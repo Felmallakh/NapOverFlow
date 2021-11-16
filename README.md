@@ -4,7 +4,7 @@ Nap Overflow is a Stack Overflow clone, it is an application that allows users t
 
 <h4> Documentation: <a href="https://github.com/Felmallakh/NapOverFlow/wiki">Nap Overflow Wiki</a></h4>
 
-<h4> Link to Live Application: <a href="https://napoverflow.herokuapp.com/">Nap Overflow</a></h4>
+<h4> Link to Live Application: <a href="https://nap-overflow.herokuapp.com/">Nap Overflow</a></h4>
 
 <h2> Features </h2>
 <ul>
