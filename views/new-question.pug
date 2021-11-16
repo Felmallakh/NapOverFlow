@@ -12,7 +12,7 @@ block content
                     ul
                         each error in errors
                             li= error
-            form(action='/questions', method='post')
+            form(action='/questions/new', method='post')
                 input(type='hidden', name='_csrf', value=csrfToken)
                 p.title Title
                 p.descriptionTitle We will try to read your mind, but just in case, be specific.
