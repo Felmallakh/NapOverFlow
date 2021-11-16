@@ -41,7 +41,7 @@ app.use(
 
 // create Session table if it doesn't already exist
 store.sync();
-
+app.use(restoreUser);
 app.use(indexRouter);
 app.use(usersRouter);
 app.use("/sign-up", signUpRouter);
@@ -55,7 +55,7 @@ app.use((req, res, next) => {
   next(err);
 });
 
-app.use(restoreUser);
+
 
 // Error handler for 404 errors.
 app.use((err, req, res, next) => {
