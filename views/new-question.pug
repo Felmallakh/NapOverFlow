@@ -1,18 +1,25 @@
 extends layout
 
+append head
+    link(rel="stylesheet" href="/stylesheets/question-form.css")
+
 block content
-    if errors
-        div
-            p The following error(s) occurred:
-            ul
-                each error in errors
-                    li= error
-    form(action='/questions', method='post')
-        input(type='hidden', name='_csrf', value=csrfToken)
-        p.title Title
-        p.descriptionTitle We will try to read your mind, but just in case, be specific.
-        input(type='text', name='title', value=question.title, placeholder='e.g. How much wood would a woodchuck chuck if he didn\'t sleep well?')
-        p.body Body
-        p.descriptionBody Let us know what info we need to help answer your question.
-        textarea(name='body', value=question.content)
-        button(name='submitQuestion') Ask question
+    div.content
+        h2 Ask a publicly-viewed question
+        div.questionForm
+            if errors
+                div.errors
+                    p The following error(s) occurred:
+                    ul
+                        each error in errors
+                            li= error
+            form(action='/questions', method='post')
+                input(type='hidden', name='_csrf', value=csrfToken)
+                p.title Title
+                p.descriptionTitle We will try to read your mind, but just in case, be specific.
+                input(type='text', name='title', value=question.title, placeholder='e.g. How much wood would a woodchuck chuck if he didn\'t sleep well?')
+                p.body Body
+                p.descriptionBody Let us know what info we need to help answer your question.
+                textarea(style='resize: none', name='body', value=question.content)
+
+        button.submit(name='submitQuestion') Ask question
