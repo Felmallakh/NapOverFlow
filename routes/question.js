@@ -49,4 +49,9 @@ router.post('/', questionValidator, csrfProtection, asyncHandler(async (req, res
     };
 }));
 
+router.get('/', asyncHandler(async(req, res, next) => {
+    const questions = await Question.findAll();
+    res.render('questions', { title: 'All Questions', questions });
+}))
+
 module.exports = router;
