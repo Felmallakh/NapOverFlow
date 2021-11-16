@@ -29,7 +29,7 @@ const questionValidator = [
 ];
 
 router.get('/', asyncHandler(async(req, res, next) => {
-    const questions = await Question.findAll();
+    const questions = await Question.findAll({ include: User });
     res.render('questions', { title: 'All Questions', questions });
 }))
 
