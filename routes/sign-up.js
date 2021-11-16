@@ -1,12 +1,12 @@
 const express = require('express');
 const bcrypt = require('bcryptjs');
-const csrf = require('csurf');
 const { check, validationResult } = require('express-validator');
+const { asyncHandler , csrfProtection } = require("./utils")
 
-const { User } = require('../db/models');
+const { User } = require('../db/models/');
 const { loginUser } = require('../auth');
 
-const csrfProtection = csrf({ cookie: true });
+
 const router = express.Router();
 
 // async function to hash the password given through the sign-up page
@@ -14,8 +14,7 @@ async function hashPassword(password) {
     const hash = await bcrypt.hash(password, 12); // hash the password with 12 salt rounds
     return hash;
 };
-// async handler
-const asyncHandler = handler => (req, res, next) => handler(req, res, next).catch(next);
+
 // validators for user creation
 const userValidators = [
     // check the display name...if empty or more than 50 characters, display error accordingly
@@ -33,7 +32,7 @@ const userValidators = [
         .isEmail()
         .withMessage('Email provided is not a valid email address')
         .custom(value => {
-            return db.User.findOne({
+            return User.findOne({
                 where: { email: value }
             })
                 .then(user => {
@@ -55,7 +54,7 @@ router.get('/', csrfProtection, (req, res) => {
 router.post('/', csrfProtection, userValidators, asyncHandler(async (req, res) => {
     const { displayName, email, password } = req.body;
 
-    const newUser = User.build({ displayName, email, });
+    const newUser = User.build({ displayName, email });
 
     const validatorErrors = validationResult(req);
 

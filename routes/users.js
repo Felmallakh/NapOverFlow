@@ -1,11 +1,11 @@
 var express = require('express');
-const { check, validationResult } = require('express-validator');
-var bcrypt= require('brcryptjs');
 var router = express.Router();
 var db=require('../db/models');
+var bcrypt= require('bcryptjs');
+
 const { loginUser, logoutUser } = require('../auth');
-
-
+const { check, validationResult } = require('express-validator');
+const { asyncHandler, csrfProtection } = require("./utils");
 
 router.get('/login', csrfProtection,(req, res)=> {
   res.render('user-login',{

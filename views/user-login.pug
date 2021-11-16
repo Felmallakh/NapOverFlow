@@ -6,7 +6,7 @@ block content
             p The following error occured:
             ul
                 each error in errors
-                li=error
+                  li=error
     form(action='/login' method='post')
         input(type='hidden' name='_csrf' value=csrfToken)
         label(for='email') Email Address
@@ -16,5 +16,5 @@ block content
         div
            button(name='log-in') Login
            a(href='/' ) Cancel
-     div
-        p: a(href='/register') Create an new account
+        div
+          p: a(href='/sign-up') Create an new account

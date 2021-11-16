@@ -6,7 +6,7 @@ block content
             p The following error(s) occurred:
             ul
                 each error in errors
-                li= error
+                  li= error
     form(action='/sign-up', method='post')
         input(type='hidden', name='_csrf', value=csrfToken)
         label(for='displayName') Display name
