@@ -12,16 +12,15 @@ router.get('/login', csrfProtection, (req, res) => {
     title: 'Login',
     csrfToken: req.csrfToken(),
   });
-
 });
 
 const loginValidators = [
-  check('email')
+  check("email")
     .exists({ checkFalsy: true })
-    .withMessage('Provide a Valid Email Address and Password'),
-  check('password')
+    .withMessage("Please provide valid email address"),
+  check("password")
     .exists({ checkFalsy: true })
-    .withMessage('Please provide a value for Password'),
+    .withMessage("Password cannot be empty"),
 ];
 
 router.post('/login', csrfProtection, loginValidators,
@@ -42,7 +41,7 @@ router.post('/login', csrfProtection, loginValidators,
         if (passwordMatch) {
           loginUser(req, res, user);
           return res.redirect('/');
-        }
+        };
       }
       errors.push('Login failed for the given email address and password');
     } else {
