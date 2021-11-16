@@ -30,7 +30,7 @@ const questionValidator = [
 
 router.get('/', asyncHandler(async(req, res, next) => {
     const questions = await Question.findAll({ include: User });
-    res.render('questions', { title: 'All Questions', questions });
+    res.render('questions-list', { title: 'All Questions', questions });
 }))
 
 router.get('/new', csrfProtection, (req, res) => {
@@ -58,7 +58,7 @@ router.get("/:id(\\d+)", csrfProtection, async (req, res) => {
     const questionId = parseInt(req.params.id, 10);
     const question = await Question.findByPk(questionId, { include: User });
 
-    res.render("questions", { question, csrfToken: req.csrfToken()});
+    res.render("question", { question, csrfToken: req.csrfToken()});
 });
 
 
