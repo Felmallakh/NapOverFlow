@@ -1,9 +1,11 @@
 var express = require('express');
 var router = express.Router();
-
+const { Question } = require('../db/models')
+const { asyncHandler } = require('../routes/utils')
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Nap-Overflow' });
-});
+router.get('/', asyncHandler(async(req, res, next) => {
+  const questions = await Question.findAll();
+  res.render('index', { title: 'Nap-Overflow', questions });
+}));
 
 module.exports = router;
