@@ -1,6 +1,9 @@
 .content {
     display: flex;
     flex-direction: column;
+    transform: translate(30%, 25%);
+    width: 31%;
+    margin-left: 24%;
 }
 
 .questionForm {
@@ -32,6 +35,7 @@ p {
 }
 
 input, textarea {
+    margin-top: 5px;
     margin-bottom: 20px;
     width: 700px;
 }
