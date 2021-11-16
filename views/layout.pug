@@ -15,7 +15,7 @@ html
         input#search-bar(action="/search" type="text" placeholder="🔎 Search for a napping question")
       div.sign_links
         if user
-          span.logged_in= `Current User: ${user.username}`
+          span.logged_in= `Current User: ${user.displayName}`
           a(href="/questions/new") Ask a Question
           a(href='/logout') Sign Out
         else

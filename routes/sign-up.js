@@ -17,34 +17,46 @@ async function hashPassword(password) {
 
 // validators for user creation
 const userValidators = [
-    // check the display name...if empty or more than 50 characters, display error accordingly
-    check('displayName')
-        .exists({ checkFalsy: true })
-        .withMessage('Please provide a value for Display Name')
-        .isLength({ max: 50 })
-        .withMessage('Display Name must not be more than 50 characters long'),
-    // check the email...if empty OR more than 255 characters OR not a valid email OR email already in use, display error accordingly
-    check('email')
-        .exists({ checkFalsy: true })
-        .withMessage('Please provide a value for Email')
-        .isLength({ max: 255 })
-        .withMessage('Email must not be more than 255 characters long')
-        .isEmail()
-        .withMessage('Email provided is not a valid email address')
-        .custom(value => {
-            return User.findOne({
-                where: { email: value }
-            })
-                .then(user => {
-                    if (user) {
-                        return Promise.reject('The provided email is already in use by another account')
-                    }
-                });
-        }),
-    // check the password...if empty display an error --> ADDITIONAL MAYBE? custom characters required
-    check('password')
-        .exists({ checkFalsy: true })
-        .withMessage('Please provide a password')
+  // check the display name...if empty or more than 50 characters, display error accordingly
+  check("displayName")
+    .exists({ checkFalsy: true })
+    .withMessage("Please provide a value for Display Name")
+    .isLength({ max: 50 })
+    .withMessage("Display Name must not be more than 50 characters long"),
+  // check the email...if empty OR more than 255 characters OR not a valid email OR email already in use, display error accordingly
+  check("email")
+    .exists({ checkFalsy: true })
+    .withMessage("Please provide a value for Email")
+    .isLength({ max: 255 })
+    .withMessage("Email must not be more than 255 characters long")
+    .isEmail()
+    .withMessage("Email provided is not a valid email address")
+    .custom((value) => {
+      return User.findOne({
+        where: { email: value },
+      }).then((user) => {
+        if (user) {
+          return Promise.reject(
+            "The provided email is already in use by another account"
+          );
+        }
+      });
+    }),
+  // check the password...if empty display an error
+  check("password")
+    .exists({ checkFalsy: true })
+    .withMessage("Please provide a password")
+    .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])/, "g")
+    .withMessage("Password must contain at least 1 lowercase letter, uppercase letter, number, and special character (i.e. '!@#$%^&*')"),
+  check("confirmPassword")
+    .exists({ checkFalsy: true })
+    .withMessage("Please provide value for Confirm password")
+    .custom((value, {req}) => {
+        if (value !== req.body.password){
+            throw new Error('Confirm Password does not match Password')
+        }
+        return true;
+    })
 ];
 
 router.get('/', csrfProtection, (req, res) => {
