@@ -1,25 +1,25 @@
-const db = require ("./db/models");
+const db = require("./db/models");
 const session = require('express-session');
 
-const loginUser = ( req, res, user ) => {
-    req.session.auth = {
-        userId: user.id
-    }
-    // req.session.save(() => {
-    //   res.redirect('/')
-    // })
+const loginUser = (req, res, user) => {
+  req.session.auth = {
+    userId: user.id
+  }
+  // req.session.save(() => {
+  //   res.redirect('/')
+  // })
 }
 
-const logoutUser = ( req, res, user ) => {
-    delete req.session.auth;
+const logoutUser = (req, res, user) => {
+  delete req.session.auth;
 }
 
 // middleware function that can be added to any routes that we want to restrict to logged in users.
-const requireAuth = ( req, res, next ) => {
-    if (!res.locals.authenicated) {
-        return res.redirect("/login")
-    }
-    return next()
+const requireAuth = (req, res, next) => {
+  if (!res.locals.authenticated) {
+    return res.redirect("/login")
+  }
+  return next()
 };
 
 const restoreUser = async (req, res, next) => {
@@ -53,8 +53,8 @@ const restoreUser = async (req, res, next) => {
 };
 
 module.exports = {
-    loginUser,
-    logoutUser,
-    requireAuth,
-    restoreUser
+  loginUser,
+  logoutUser,
+  requireAuth,
+  restoreUser
 };

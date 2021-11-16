@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
+
+
 const { check, validationResult } = require('express-validator');
 const { asyncHandler, csrfProtection } = require("./utils");
 const { Question, User } = require('../db/models');
@@ -28,16 +30,18 @@ const questionValidator = [
         .withMessage('Please provide content for your question')
 ];
 
+
+router.get('/new', requireAuth, csrfProtection, (req, res) => {
+    res.render('new-question', { csrfToken: req.csrfToken(), title: 'Ask Question', question: {} });
+});
+
 router.get('/', asyncHandler(async(req, res, next) => {
     const questions = await Question.findAll({ include: User });
     res.render('questions', { title: 'All Questions', questions });
 }))
 
-router.get('/new', csrfProtection, (req, res) => {
-    res.render('new-question', { csrfToken: req.csrfToken(), title: 'Ask Question', question: {} });
-});
-
 router.post('/', questionValidator, csrfProtection, requireAuth, asyncHandler(async (req, res) => {
+
     const { title, content } = req.body;
     const question = await Question.build({
         title, content, userId: res.locals.user.id
@@ -53,6 +57,7 @@ router.post('/', questionValidator, csrfProtection, requireAuth, asyncHandler(as
         res.render('new-question', { csrfToken: req.csrfToken(), question, errors, title: 'Ask Question' });
     };
 }));
+
 
 router.get("/:id(\\d+)", csrfProtection, async (req, res) => {
     const questionId = parseInt(req.params.id, 10);
