@@ -3,8 +3,23 @@ html
   head
       block head
         title= title
-        link(rel='stylesheet' href='/stylesheets/reset.css')
+        link(rel='stylesheet' href='/stylesheets/layout.css')
+        link(href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet" type="text/css")
+        link(rel="shortcut icon" type="image/jpg" href="https://cdn.discordapp.com/attachments/907409069856419841/910044223221399562/unknown.png")
   body
-    div.logo
-      a(href='/') Nap Overflow
+    div.nav_links_container
+      div.home_links
+        a#home-page(href='/') Nap Overflow
+        a#question-link(href="/questions") Questions
+      div.search_bar_container
+        input#search-bar(action="/search" type="text" placeholder="🔎 Search for a napping question")
+      div.sign_links
+        if user
+          span.logged_in= `Current User: ${user.username}`
+          a(href="/questions/new") Ask a Question
+          a(href='/logout') Sign Out
+        else
+          a(href='/login') Sign In
+          a(href='/sign-up') Sign Up
+          a(href="/demo") Demo
     block content
