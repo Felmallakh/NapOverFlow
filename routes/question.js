@@ -28,11 +28,11 @@ const questionValidator = [
         .withMessage('Please provide content for your question')
 ];
 
-router.get('/new', requireAuth, csrfProtection, (req, res) => {
+router.get('/new', csrfProtection, (req, res) => {
     res.render('new-question', { csrfToken: req.csrfToken(), title: 'Ask Question', question: {} });
 });
 
-router.post('/', requireAuth, questionValidator, csrfProtection, asyncHandler(async (req, res) => {
+router.post('/', questionValidator, csrfProtection, asyncHandler(async (req, res) => {
     const { title, content } = req.body;
     const question = await Question.build({
         title, content, userId: res.locals.user.id
