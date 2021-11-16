@@ -1,0 +1,12 @@
+extends layout.pug
+
+block content
+    h1 #{question.title}
+    div#question
+        h3 #{question.content}
+        div
+            div.question-info
+                a asked by: #{question.User.displayName}
+                br
+                a asked on: #{question.updatedAt}
+
