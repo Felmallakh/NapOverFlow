@@ -1,0 +1,20 @@
+extends layout
+
+block content
+    div.wrapper
+        div.sidebar
+        div.mainbar
+            div.askBox
+                a.qType Recent Questions
+                form(action='/questions/ask' method="get")
+                    button.ask Ask a Question
+            if questions
+                each question in questions
+                    div.questionBox
+                        li
+                            d=question.title
+                            d=question.createdAt
+                            d=question.userId
+                        div.qCont
+                            a(href=`/questions/${question.id}`) #{question.title}
+        div.sidebar
