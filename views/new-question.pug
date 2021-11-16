@@ -19,6 +19,5 @@ block content
                 input(type='text', name='title', value=question.title, placeholder='e.g. How much wood would a woodchuck chuck if he didn\'t sleep well?')
                 p.body Body
                 p.descriptionBody Let us know what info we need to help answer your question.
-                textarea(style='resize: none', name='body', value=question.content)
-
-        button.submit(name='submitQuestion') Ask question
+                textarea(style='resize: none', name='content') #{question.content}
+                button.submit(name='submitQuestion') Ask question
