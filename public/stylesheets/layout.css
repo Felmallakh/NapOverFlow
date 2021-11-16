@@ -65,7 +65,7 @@ body {
     color: #6681f7;
 }
 
-.sign_links {
+.sign_links, button {
     width: 25%;
     height: 100%;
     display: flex;
@@ -73,14 +73,20 @@ body {
     align-items: center;
 }
 
-.sign_links > a:hover {
+button {
+    width: 88%;
+}
+
+.sign_links > a:hover,
+button:hover {
     background-color: #6681f7;
     color: black
 }
 
 #question-link,
 .logged_in,
-.sign_links > a {
+.sign_links > a,
+button {
     color: white;
     margin: 0px 5px 0px 5px;
     font-weight: 700;

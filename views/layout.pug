@@ -17,7 +17,8 @@ html
         if locals.user
           span.logged_in= `Current User: ${user.displayName}`
           a(href="/questions/new") Ask a Question
-          a(href='/logout') Sign Out
+          form(action='/logout' method='post')
+            button Sign out
         else
           a(href='/login') Sign In
           a(href='/sign-up') Sign Up
