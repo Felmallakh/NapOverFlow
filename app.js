@@ -21,7 +21,7 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.use(cookieParser());
+app.use(cookieParser(sessionSecret));
 app.use(express.static(path.join(__dirname, 'public')));
 
 
@@ -41,9 +41,9 @@ app.use(
 // create Session table if it doesn't already exist
 store.sync();
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/sign-up', signUpRouter);
+app.use(indexRouter);
+app.use(usersRouter);
+app.use("/sign-up",signUpRouter);
 
 
 app.use((req, res, next) => {
@@ -75,6 +75,7 @@ app.use((err, req, res, next) => {
     title: 'Server Error',
     message: isProduction ? null : err.message,
     stack: isProduction ? null : err.stack,
+    err
   });
 });
 
