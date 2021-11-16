@@ -1,0 +1,17 @@
+extends layout
+
+block content
+      if errors
+            div
+                  p The following error occured:
+                  ul
+                        each error in errors
+                        li=error
+      h1=question.title
+      p=question.content
+      div=question.userId
+      ul Answers to this Question
+            each answer in answers
+            li
+                  p=answer.content
+                  div=answer.scoreId.score
