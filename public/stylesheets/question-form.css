@@ -73,3 +73,19 @@ textarea {
 .errors > p {
     margin: 5px;
 }
+
+.search_bar_container {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+#search-bar {
+    width: 80%;
+    height: 35px;
+}
+
