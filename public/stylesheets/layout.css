@@ -29,7 +29,7 @@ body {
 #search-bar {
     width: 80%;
     height: 35px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: Lobster;
     font-size: 15px;
     background-color: black;
     padding: 0px 10px;
@@ -40,7 +40,10 @@ body {
 
 #sign-out {
     height: 100%;
-    padding: 6.5px;
+    padding: 5.5px;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 16px;
+
 }
 
 
