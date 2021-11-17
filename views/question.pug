@@ -10,17 +10,15 @@ block content
                 a asked by: #{question.User.displayName}
                 br
                 a asked on: #{(question.updatedAt).toString().split(' ').slice(0,5).join(' ')}
-            div.question-buttons
-                if locals.authenticated
-                    button(id=`question-${question.id}`) Answer
-                    if locals.user.id === question.userId
-                        button(id=`question-${question.id}`) Delete
-                        button(id=`question-${question.id}`) Edit
 
+            div
+                if locals.authenticated
+                    form(action=`/questions/${question.id}/answers`, method=post)
+                        button(id=`question-${question.id}`) Answer
+                        
                 if locals.user.id === question.userId
                     form(action=`/questions/${question.id}/delete` method='post')
                         button.delete-button Delete
         
-        script
-        include delete-question.js
+  
 
