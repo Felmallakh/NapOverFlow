@@ -4,6 +4,7 @@
       margin-left: 20%;
       margin-right: 15%;
       border-left: 1px solid rgb(200, 200, 200);
+      border-bottom: 1px solid rgb(200, 200, 200);
 }
 
 li a {
@@ -61,18 +62,32 @@ h1 {
 }
 
 #question{
-      color:green;
+      color:rgb(16, 24, 16);
       margin-left: 15px;
+
+      padding-left: 25px;
+
 }
 
 .question-info{
-      text-align: right;
-      margin-right: 20px;
-      color:red;
+      font-size: 80%;
+      text-align:end;
+      position: relative;
+      display:block;
 }
 
 .question-buttons{
-      width: 80px;
-      text-align: center;
-      
+      background-color: #22389B;
+      border:white;
+      width: 70px;
+      padding:.5rem;
+      border-radius:5px;
+
+
+
+
+}
+
+.title{
+       border-bottom: 1px solid rgb(200, 200, 200);
 }
