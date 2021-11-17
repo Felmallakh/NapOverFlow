@@ -129,4 +129,5 @@ router.post('/answer/delete/:id(\\d+)', csrfProtection,
     res.redirect(`/question/${answer.questionId}`);
   }));
 
-module.exports = router;
+
+  module.exports = router;
