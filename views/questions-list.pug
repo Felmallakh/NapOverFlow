@@ -1,12 +1,14 @@
 extends layout.pug
 
+append head
+  link(rel="stylesheet" href="/stylesheets/questions.css")
+  script(src="/javascripts/questions.js" type="module" defer)
+
 block content
   h1= title
-  ul
+  ul.question_list
     each question in questions
       li.questions
         d Q:
         d: a(href=`/questions/${question.id}`) #{question.title}
         d  asked #{(question.createdAt).toString().split(' ').slice(0,3).join(' ')} by #{question.User.displayName}
-
-
