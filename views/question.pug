@@ -8,7 +8,7 @@ block content
             div.question-info
                 a asked by: #{question.User.displayName}
                 br
-                a asked on: #{question.updatedAt}
+                a asked on: #{(question.updatedAt).toString().split(' ').slice(0,5).join(' ')}
             div
                 if locals.authenticated
                     button(id=`question-${question.id}`) Answer

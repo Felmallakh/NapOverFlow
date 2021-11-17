@@ -5,6 +5,7 @@ block content
   ul
     each question in questions
       li.questions
-        d: a(href=`/questions/${question.id}`) #{question.title} #{question.createdAt}
+        d: a(href=`/questions/${question.id}`) #{question.title}
+        d  asked #{(question.createdAt).toString().split(' ').slice(0,3).join(' ')} by #{question.User.displayName}
 
-  
+
