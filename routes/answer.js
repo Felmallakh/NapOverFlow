@@ -7,7 +7,7 @@ const { csrfProtection, asyncHandler } = require('./utils');
 const router = express.Router();
 
 
-router.get('/answer/:id(//d+)',asyncHandler(async(req,res)=>{
+router.get('/answer/:id(\\d+)',asyncHandler(async(req,res)=>{
     const answerId= parseInt(req.params.id, 10);
     const answer= await db.Answer.findByPk(answerId,{include : [{model:db.Users},{model: db.Question}]})
     res.render('answer',{title: 'Answer',answer});
