@@ -72,7 +72,7 @@ router.post("/:id(\\d+)/delete", requireAuth, asyncHandler(async (req, res) => {
     const question = await Question.findByPk(questionId);
 
     await question.destroy();
-     res.redirect('/questions');
+    res.redirect('/questions');
 }))
 
 
