@@ -8,7 +8,6 @@ block content
         div.questionForm
             if errors
                 div.errors
-                    p The following error(s) occurred:
                     ul
                         each error in errors
                             li= error
@@ -18,6 +17,6 @@ block content
                 p.descriptionTitle We will try to read your mind, but just in case, be specific.
                 input(type='text', name='title', value=question.title, placeholder='e.g. How much wood would a woodchuck chuck if he didn\'t sleep well?')
                 p.body Body
-                p.descriptionBody Let us know what info we need to help answer your question.
+                p.descriptionBody Don't be shy, let us know what info we need to help answer your question.
                 textarea(style='resize: none', name='content') #{question.content}
                 button.submit(name='submitQuestion') Ask question

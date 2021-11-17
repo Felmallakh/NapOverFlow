@@ -11,8 +11,8 @@ const router = express.Router();
 
 // async function to hash the password given through the sign-up page
 async function hashPassword(password) {
-    const hash = await bcrypt.hash(password, 12); // hash the password with 12 salt rounds
-    return hash;
+  const hash = await bcrypt.hash(password, 12); // hash the password with 12 salt rounds
+  return hash;
 };
 
 // validators for user creation
@@ -51,38 +51,37 @@ const userValidators = [
   check("confirmPassword")
     .exists({ checkFalsy: true })
     .withMessage("Please provide value for Confirm password")
-    .custom((value, {req}) => {
-        if (value !== req.body.password){
-            throw new Error('Confirm Password does not match Password')
-        }
-        return true;
+    .custom((value, { req }) => {
+      if (value !== req.body.password) {
+        throw new Error('Confirm Password does not match Password')
+      }
+      return true;
     })
 ];
 
 router.get('/', csrfProtection, (req, res) => {
-    res.render('sign-up', { csrfToken: req.csrfToken(), title: 'Sign-Up', create: {} });
+  res.render('sign-up', { csrfToken: req.csrfToken(), title: 'Sign-Up', create: {} });
 });
 
 router.post('/', csrfProtection, userValidators, asyncHandler(async (req, res) => {
-    const { displayName, email, password } = req.body;
+  const { displayName, email, password } = req.body;
 
-    const newUser = User.build({ displayName, email });
+  const newUser = User.build({ displayName, email });
 
-    const validatorErrors = validationResult(req);
+  const validatorErrors = validationResult(req);
 
-    if (validatorErrors.isEmpty()) {
-        const hashedPassword = await hashPassword(password);
-        console.log(hashedPassword);
-        newUser.hashedPassword = hashedPassword;
-        await newUser.save();
-        loginUser(req, res, newUser);
-        res.redirect('/');
-    } else {
-        const errors = validatorErrors.array().map(error => error.msg);
-        res.render('sign-up', {
-            title: 'Sign-Up', create: newUser, errors, csrfToken: req.csrfToken(),
-        });
-    }
+  if (validatorErrors.isEmpty()) {
+    const hashedPassword = await hashPassword(password);
+    console.log(hashedPassword);
+    newUser.hashedPassword = hashedPassword;
+    await newUser.save();
+    loginUser(req, res, newUser);
+  } else {
+    const errors = validatorErrors.array().map(error => error.msg);
+    res.render('sign-up', {
+      title: 'Sign-Up', create: newUser, errors, csrfToken: req.csrfToken(),
+    });
+  }
 }));
 
 module.exports = router;
