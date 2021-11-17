@@ -7,7 +7,7 @@ const { csrfProtection, asyncHandler } = require('./utils');
 const router = express.Router();
 
 
-router.get('/answer/:id(\\d+)',asyncHandler(async(req,res)=>{
+router.get('/answers/:id(\\d+)',asyncHandler(async(req,res)=>{
     const answerId= parseInt(req.params.id, 10);
     const answer= await db.Answer.findByPk(answerId,{include : [{model:db.Users},{model: db.Question}]})
     res.render('answer',{title: 'Answer',answer});
@@ -21,12 +21,12 @@ const answerValidators=[
     .withMessage('Contents must not be more than 1000 characters more')
 ];
 
-router.get('/question/:questionId(\\d+)/answer/add',csrfProtection,
+router.get('/questions/:questionId(\\d+)/answers',csrfProtection,
   asyncHandler(async(req,res)=>{
-      const questionId = parseInt(req.params.questionId, 10);
+      const questionId = req.params.questionId;
       const question=await db.Question.findByPk(questionId);
       const answer=db.Answer.build();
-      res.render('answer-add',{
+      res.render('answer',{
           title : 'Add Answer',
           question,
           answer,
@@ -35,11 +35,15 @@ router.get('/question/:questionId(\\d+)/answer/add',csrfProtection,
   }))
 
 
-router.post('/question/:questonId(\\d+)/answer/add',csrfProtection,answerValidators,
+router.post('/questions/:questionId(\\d+)/answers',csrfProtection,answerValidators,
   asyncHandler(async(req,res)=>{
-    const questionId = parseInt(req.params.questionId, 10);
+    const questionId = req.params.questionId;
     const question=await db.Question.findByPk(questionId);
-
+    const userId = res.locals.user.id;
+    const score= await db.ScoringAnswer.create({
+        userId,score:0
+    });
+const scoreId=score.id;
     const{
         content
     }=req.body;
@@ -54,10 +58,10 @@ router.post('/question/:questonId(\\d+)/answer/add',csrfProtection,answerValidat
 
     if (validatorErrors.isEmpty()) {
         await answer.save();
-        res.redirect(`/question/${questionId}`);
+        res.redirect(`/questions/${questionId}`);
       } else {
         const errors = validatorErrors.array().map((error) => error.msg);
-        res.render('answer-add', {
+        res.render('answers', {
           title: 'Add Answer',
           question,
           answer,
