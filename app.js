@@ -9,6 +9,7 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const signUpRouter = require('./routes/sign-up');
 const questionRouter = require('./routes/question');
+const answerRouter = require ('./routes/answer')
 const { environment, sessionSecret } = require('./config')
 const { restoreUser } = require("./auth");
 
@@ -45,6 +46,7 @@ app.use(indexRouter);
 app.use(usersRouter);
 app.use("/sign-up", signUpRouter);
 app.use('/questions', questionRouter);
+app.use(answerRouter);
 
 
 app.use((req, res, next) => {
