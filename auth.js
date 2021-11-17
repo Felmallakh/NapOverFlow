@@ -5,13 +5,16 @@ const loginUser = (req, res, user) => {
   req.session.auth = {
     userId: user.id
   }
-  // req.session.save(() => {
-  //   res.redirect('/')
-  // })
+  req.session.save(() => {
+    res.redirect('/')
+  })
 }
 
 const logoutUser = (req, res, user) => {
   delete req.session.auth;
+  req.session.save(() => {
+    res.redirect('/')
+  })
 }
 
 // middleware function that can be added to any routes that we want to restrict to logged in users.

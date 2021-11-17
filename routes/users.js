@@ -40,7 +40,6 @@ router.post('/login', csrfProtection, loginValidators,
 
         if (passwordMatch) {
           loginUser(req, res, user);
-          return res.redirect('/');
         };
       }
       errors.push('Login failed for the given email address and password');
@@ -57,13 +56,11 @@ router.post('/login', csrfProtection, loginValidators,
 
 router.post('/logout', (req, res) => {
   logoutUser(req, res);
-  res.redirect('/');
 });
 
 router.get('/demo', asyncHandler(async (req, res) => {
   const user = await db.User.findByPk(1);
   loginUser(req, res, user);
-  return res.redirect('/');
 }));
 
 module.exports = router;
