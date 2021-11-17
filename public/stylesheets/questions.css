@@ -1,11 +1,36 @@
+.page_content {
+      display: block;
+      margin-left: 20%;
+      margin-right: 15%;
+      border-left: 1px solid grey;
+}
+
+li a {
+      text-decoration: none;
+}
+
+li a:hover {
+      color:cornflowerblue;
+}
+
 .question_list {
-      display: flex;
+      display: block;
       flex-direction: column;
-      border-left: 1px solid black;
-      border-top: 1px solid black;
+      border-top: 1px solid grey;
       list-style: none;
-      margin-left: 15%;
-      margin-right: 15%
+}
+
+li span {
+      display: block;
+}
+
+d:nth-child(2) {
+      margin-top: 7px;
+      margin-bottom: 7px;
+      display:block;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
 }
 
 li {
@@ -20,8 +45,6 @@ d:nth-child(3) {
 }
 
 h1 {
-      height:max-content;
-      margin-left: 15%;
-      border-left: 1px solid black;
+      height: max-content;
       padding: 10px
 }
