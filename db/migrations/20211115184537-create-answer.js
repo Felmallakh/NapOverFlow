@@ -10,7 +10,7 @@ module.exports = {
       },
       content: {
         allowNull: false,
-        type: Sequelize.TEXT
+        type: Sequelize.TEXT(1000)
       },
       userId: {
         allowNull: false,
