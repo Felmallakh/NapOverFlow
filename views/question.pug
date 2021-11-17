@@ -9,4 +9,10 @@ block content
                 a asked by: #{question.User.displayName}
                 br
                 a asked on: #{question.updatedAt}
+            div
+                if locals.authenticated
+                    button(id=`question-${question.id}`) Answer
+                    if locals.userId === question.userId
+                        button(id=`question-${question.id}`) Delete
+                        button(id=`question-${question.id}`) Edit
 
