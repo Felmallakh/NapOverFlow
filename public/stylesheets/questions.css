@@ -59,3 +59,20 @@ h1 {
       padding: 10px;
       padding-left: 25px;
 }
+
+#question{
+      color:green;
+      margin-left: 15px;
+}
+
+.question-info{
+      text-align: right;
+      margin-right: 20px;
+      color:red;
+}
+
+.question-buttons{
+      width: 80px;
+      text-align: center;
+      
+}
