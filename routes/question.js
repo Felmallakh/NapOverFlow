@@ -67,26 +67,12 @@ router.get("/:id(\\d+)", csrfProtection, async (req, res) => {
     res.render("question", { question, csrfToken: req.csrfToken() });
 });
 
-router.put("/:id", questionValidator, requireAuth, csrfProtection, asyncHandler(async (req, res) => {
-    const questionId = parseInt(req.params.id, 10);
-    const question = await Question.findByPk(questionId, { include: User });
-    const { title, content } = req.body;
-
-    if (validatorErrors.isEmpty()) {
-        await question.update({ title, content })
-        res.redirect(`/questions/${questionId}`);
-    } else {
-        const errors = validatorErrors.array().map((err) => err.msg);
-        res.render("question", { errors, question, csrfToken: req.csrfToken() })
-    }
-}))
-
-router.delete("/:id", asyncHandler(async (req, res) => {
+router.post("/:id(\\d+)/delete", requireAuth, asyncHandler(async (req, res) => {
     const questionId = parseInt(req.params.id, 10);
     const question = await Question.findByPk(questionId);
 
     await question.destroy();
-    res.send();
+     res.redirect('/questions');
 }))
 
 
