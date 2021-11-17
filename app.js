@@ -49,7 +49,6 @@ app.use('/questions', questionRouter);
 
 app.use((req, res, next) => {
   const err = new Error('The requested page couldn\'t be found.');
-  console.log(req.path)
   err.status = 404;
   next(err);
 });
