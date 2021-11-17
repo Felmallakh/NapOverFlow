@@ -12,6 +12,14 @@ block content
             div
                 if locals.authenticated
                     button(id=`question-${question.id}`) Answer
+                    if locals.user.id === question.userId
+                        button(id=`question-${question.id}`) Delete
+                        button(id=`question-${question.id}`) Edit
+
                 if locals.user.id === question.userId
                     form(action=`/questions/${question.id}/delete` method='post')
                         button.delete-button Delete
+        
+        script
+        include delete-question.js
+
