@@ -1,3 +1,7 @@
+body {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
 .content {
     display: flex;
     flex-direction: column;
@@ -11,8 +15,8 @@
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
     border-radius: 5px;
     padding: 20px;
+    background-color: white;
 }
-
 
 form {
     display: flex;
@@ -30,7 +34,6 @@ ul {
 
 li {
     font-style: italic;
-    font-size: larger;
 }
 
 p {
@@ -42,19 +45,25 @@ input, textarea {
     margin-top: 1%;
     margin-bottom: 20px;
     width: 100%;
+    border-color: rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
 }
 
 textarea {
-    height: 100px;
+    height: 200px;
+}
+
+input {
+    height: 25px;
 }
 
 .title, .body {
     font-weight: bold;
-    font-size: 18px;
+    font-size: 20px;
 }
 
 .descriptionTitle, .descriptionBody {
-    font-size: 12px;
+    font-size: 14px;
 }
 
 .submit {
@@ -89,4 +98,3 @@ textarea {
     width: 80%;
     height: 35px;
 }
-
