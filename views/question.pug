@@ -12,7 +12,7 @@ block content
             div
                 if locals.authenticated
                     button(id=`question-${question.id}`) Answer
-                    if locals.userId === question.userId
+                    if locals.user.id === question.userId
                         button(id=`question-${question.id}`) Delete
                         button(id=`question-${question.id}`) Edit
 
