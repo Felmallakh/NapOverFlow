@@ -8,7 +8,11 @@ module.exports = {
     password,
     database,
     host,
-    dialect: 'postgres',
-    seederStorage: 'sequelize',
+    dialect: "postgres",
+  },
+  production: {
+    use_env_variable: "DATABASE_URL",
+    dialect: "postgres",
+    seederStorage: "sequelize",
   },
 };
