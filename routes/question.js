@@ -74,14 +74,17 @@ router.get("/:id(\\d+)", csrfProtection, async (req, res) => {
     res.render("question", { question, content, answers, csrfToken: req.csrfToken() });
 });
 
-router.post("/:id(\\d+)/delete", requireAuth, asyncHandler(async (req, res) => {
+router.post("/:id(\\d+)/delete", requireAuth,asyncHandler(async (req, res) => {
     const questionId = parseInt(req.params.id, 10);
     const question = await Question.findByPk(questionId);
+    const answers = await Answer.findAll({ where: { questionId } });
+
+    answers.forEach(ans => ans.destroy());
 
     await question.destroy();
-    res.redirect('/questions');
-}))
-
+    res.redirect("/questions");
+  })
+);
 
 
 module.exports = router;
