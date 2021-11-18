@@ -60,12 +60,11 @@ d:nth-child(3) {
       display:block;
 }
 
-h1 {
-      font-weight: normal;
-      height: max-content;
-      padding: 10px;
-      padding-left: 25px;
+h1, h3 {
+      word-break:normal ;
+      white-space: normal;
 }
+
 
 #question{
       color:rgb(16, 24, 16);
