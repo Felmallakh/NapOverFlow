@@ -13,12 +13,12 @@ block content
             input(type="hidden", name="_csrf" value=csrfToken)
             div.displayName
                 input(type='text' name='displayName' placeholder="Display name")
+            div.email
+                input(type="email" name="email" placeholder="Email Address")
             div.password
                 input(type="password" name="password" placeholder="Password")
             div
                 input(type="password" name="confirmPassword" placeholder="Confirm Password")
-            div.email
-                input(type="email" name="email" placeholder="Email")
             div.sub_cancel_buttons
                 div.submit_button
                     button(type="submit" value="submit") Sign Up
