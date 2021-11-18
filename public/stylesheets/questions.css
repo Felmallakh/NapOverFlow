@@ -1,15 +1,18 @@
+li:first-child{
+      border-top: 1px solid rgb(200, 200, 200)
+}
+
 .page_content {
       font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       display: block;
       margin-left: 20%;
       margin-right: 15%;
       border-left: 1px solid rgb(200, 200, 200);
-      border-bottom: 1px solid rgb(200, 200, 200);
 }
 
 li a {
-      font-size:larger;
-      font-weight:normal;
+      font-size: 120%;
+      font-weight: normal;
       text-decoration: none;
 }
 
@@ -21,11 +24,14 @@ li a:hover {
       color:cornflowerblue;
 }
 
+.questions {
+      padding-left: 10%
+}
+
 .question_list {
-      padding-left: 10%;
+      padding-left: 0%;
       display: block;
       flex-direction: column;
-      border-top: 1px solid rgb(200, 200, 200);
       list-style: none;
 }
 
@@ -43,11 +49,13 @@ d:nth-child(2) {
 }
 
 li {
-      margin: 5px;
+      display: block;
+      border-top: 1px solid rgb(230, 230, 230);
       padding: 10px;
 }
 
 d:nth-child(3) {
+      padding-right: 5%;
       font-size: 80%;
       text-align:end;
       position: relative;
@@ -59,35 +67,4 @@ h1 {
       height: max-content;
       padding: 10px;
       padding-left: 25px;
-}
-
-#question{
-      color:rgb(16, 24, 16);
-      margin-left: 15px;
-
-      padding-left: 25px;
-
-}
-
-.question-info{
-      font-size: 80%;
-      text-align:end;
-      position: relative;
-      display:block;
-}
-
-.question-buttons{
-      background-color: #22389B;
-      border:white;
-      width: 70px;
-      padding:.5rem;
-      border-radius:5px;
-
-
-
-
-}
-
-.title{
-       border-bottom: 1px solid rgb(200, 200, 200);
 }
