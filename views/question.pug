@@ -19,11 +19,13 @@ block content
     if answers
       div.answer-container
         each answer in answers
-            div.asnwer-content= answer.content
-            p answered by: #{answer.User.displayName} on #{answer.createdAt}
-            if answer.userId == user.id
-              form(action=`/answers/${answer.id}/delete` method="POST")
-                button.delete-button Delete
+            div.answer-content= answer.content
+            div.score #{answer.score}
+            p answered by: #{answer.User.displayName} on #{(answer.createdAt).toString().split(' ').slice(0,4).join(' ')}
+            if user
+              if answer.userId == user.id
+                form(action=`/answers/${answer.id}/delete` method="POST")
+                  button.delete-button Delete
         if user
           form.answer-form(action=`/questions/${question.id}/answers`, method='post')
               input(type='hidden',name='_csrf',value=csrfToken)

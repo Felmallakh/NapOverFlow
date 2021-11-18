@@ -4,6 +4,7 @@ module.exports = (sequelize, DataTypes) => {
     content: DataTypes.TEXT,
     userId: DataTypes.INTEGER,
     questionId: DataTypes.INTEGER,
+    score: DataTypes.INTEGER
   }, {});
   Answer.associate = function (models) {
     Answer.belongsTo(models.User, { foreignKey: 'userId' });
