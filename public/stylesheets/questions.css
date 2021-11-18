@@ -103,3 +103,9 @@ h1, h3 {
       gap:1rem;
       align-items: center;
 }
+
+.form-box{
+      width: 20rem;
+      height: 12rem;
+      font-size: 1.4 rem;
+}
