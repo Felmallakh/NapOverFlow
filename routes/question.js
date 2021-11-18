@@ -5,7 +5,7 @@ const router = express.Router();
 
 const { check, validationResult } = require('express-validator');
 const { asyncHandler, csrfProtection } = require("./utils");
-const { Question, User } = require('../db/models');
+const { Question, User, Answer } = require('../db/models');
 const { requireAuth } = require('../auth');
 
 
@@ -67,7 +67,11 @@ router.get("/:id(\\d+)", csrfProtection, async (req, res) => {
     // console.log(question.title, question.content);
     const content = question.content;
 
-    res.render("question", { question, content, csrfToken: req.csrfToken() });
+    const answers = await Answer.findAll({
+      where: { questionId },
+    });
+
+    res.render("question", { question, content, answers, csrfToken: req.csrfToken() });
 });
 
 router.post("/:id(\\d+)/delete", requireAuth, asyncHandler(async (req, res) => {
