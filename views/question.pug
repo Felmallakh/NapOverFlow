@@ -4,7 +4,7 @@ block content
   d.page_content
     h1 #{question.title}
     div#question
-        h3 #{question.content}
+        h3.question-content= content
         div
             div.question-info
                 a asked by: #{question.User.displayName}
@@ -14,6 +14,7 @@ block content
                 if locals.authenticated
                     form(action=`/questions/${question.id}/answers`, method='get')
                         button(id=`question-${question.id}`) Answer
-                if locals.user.id === question.userId
-                    form(action=`/questions/${question.id}/delete` method='post')
-                        button.delete-button Delete
+                if locals.user
+                    if locals.user.id === question.userId
+                        form(action=`/questions/${question.id}/delete` method='post')
+                            button.delete-button Delete
