@@ -12,5 +12,5 @@ block content
         li.questions
           d: a(href=`/questions/${question.id}`) #{question.title}
           d  #{question.content}
-          d  asked #{(question.createdAt).toString().split(' ').slice(0,3).join(' ')}
+          d  asked #{(question.createdAt).toString().split(' ').slice(0,4).join(' ')}
             span #{question.User.displayName}
