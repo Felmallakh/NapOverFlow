@@ -1,3 +1,39 @@
-h1,p {
-    color:black;
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+body {
+  background-color:white;
+}
+
+.title {
+  font-family: "Montserrat";
+  text-align: center;
+  color: #FFF;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 85vh;
+  letter-spacing: 1px;
+}
+
+h1 {
+  background-image: url(https://64.media.tumblr.com/f4fab2ca2196d4472ed56bcd5bca39fe/f145147b69889cf3-5f/s640x960/59b51f10c0763ba55b521718bece7ab0a64f5acc.gif);
+  background-size: cover;
+  color: transparent;
+  -moz-background-clip: text;
+  -webkit-background-clip: text;
+  text-transform: uppercase;
+  font-size: 100px;
+  line-height: .75;
+  margin: 10px 0;
+}
+h3{
+    color: black;
+    font-size:30px;
+    font-family: "Georgia";
+}
+img{
+    border-radius: 50%;
+    width:200px;
+    height: 200px;
+    padding: 1%;
 }
