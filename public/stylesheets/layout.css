@@ -97,6 +97,7 @@ body {
 
 button {
     width: 88%;
+    display:inline-block;
 }
 
 .sign_links > a:hover,
