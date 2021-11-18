@@ -7,5 +7,16 @@ append head
   script(src="/javascripts/index.js" type="module" defer)
 
 block content
-  h1= title
-  p Welcome to Nap-overflow
+   div(class="questions-container")
+    ul
+      if questions
+        each question in questions
+          li
+            a(href=`/questions/${question.id}`)
+          h1= question.title
+          div|!{question.content}
+            if user
+              if question.userId == user.id
+                form(action=`/questions/${question.id}/delete` method="POST")
+                  button Delete
+

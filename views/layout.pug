@@ -13,7 +13,8 @@ html
         a#home-page(href='/') Nap Overflow
         a#question-link(href='/questions') Questions
       div.search_bar_container
-        input#search-bar(action='/search' type='text' placeholder='🔎 Search for a napping question')
+        form.search_bar_container(action="/search" method="get")
+          input#search-bar(type='search' name="searchTerm" placeholder='🔎 Search for a napping question')
       div.sign_links
         if locals.user
           span.logged_in= `Current User: ${user.displayName}`
