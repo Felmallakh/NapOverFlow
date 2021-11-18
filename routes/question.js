@@ -69,6 +69,7 @@ router.get("/:id(\\d+)", csrfProtection, async (req, res) => {
 
     const answers = await Answer.findAll({
       where: { questionId },
+      include: User
     });
 
     res.render("question", { question, content, answers, csrfToken: req.csrfToken() });
