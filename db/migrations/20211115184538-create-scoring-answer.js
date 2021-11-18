@@ -11,10 +11,13 @@ module.exports = {
       vote: {
         type: Sequelize.BOOLEAN
       },
-      score: {
-        type: Sequelize.INTEGER
+      answerId: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        references: { model: 'Answers' }
       },
       userId: {
+        allowNull: false,
         type: Sequelize.INTEGER,
         references: { model: 'Users' }
       },
