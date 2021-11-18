@@ -108,14 +108,21 @@ router.post('/answer/edit/:id(\\d+)', csrfProtection, answerValidators,
 //   });
 // }));
 
-router.post("/answers/:id/delete",
-  asyncHandler(async (req, res) => {
-    const answerId = parseInt(req.params.id, 10);
-    const answer = await db.Answer.findByPk(answerId);
+// router.post("/answers/:id/delete",
+//   asyncHandler(async (req, res) => {
+//     const answerId = parseInt(req.params.id, 10);
+//     const answer = await db.Answer.findByPk(answerId);
+//     await answer.destroy();
+//     res.redirect("back");
+//   })
+// );
+
+router.delete("/answers/:id", asyncHandler(async(req, res) => {
+    const answer = await db.Answer.findByPk(req.params.id);
     await answer.destroy();
-    res.redirect("back");
-  })
-);
+
+    res.json({ message: "Success"})
+}))
 
 
 module.exports = router;
