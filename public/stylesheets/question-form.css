@@ -61,16 +61,18 @@ input {
 }
 
 .title, .body {
+    color: #2F243A;
     font-weight: bold;
     font-size: 20px;
 }
 
 .descriptionTitle, .descriptionBody {
+    color: #2F243A;
     font-size: 14px;
 }
 
 .submit {
-    background-color:rgb(46, 127, 202);
+    background-color:#539987;
     color: white;
     justify-content: center;
     width: 100px;
@@ -101,4 +103,3 @@ input {
     width: 80%;
     height: 35px;
 }
-
