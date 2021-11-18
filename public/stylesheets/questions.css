@@ -1,3 +1,7 @@
+body {
+      margin-bottom: 60px;
+}
+
 li:first-child{
       border-top: 1px solid rgb(200, 200, 200)
 }
@@ -6,17 +10,15 @@ li:first-child{
       font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       display: block;
       margin-left: 20%;
-      margin-right: 15%;
+      margin-right: 20%;
       border-left: 1px solid rgb(200, 200, 200);
+      overflow-x: auto;
 }
 
 li a {
       font-size: 120%;
       font-weight: normal;
       text-decoration: none;
-}
-
-a:visited {
       color:rgb(100, 114, 237);
 }
 
@@ -67,4 +69,9 @@ h1 {
       height: max-content;
       padding: 10px;
       padding-left: 25px;
+}
+
+h1, h3 {
+      word-break: break-all;
+      white-space: normal;
 }

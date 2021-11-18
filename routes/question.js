@@ -63,8 +63,10 @@ router.post('/', requireAuth, questionValidator, csrfProtection, asyncHandler(as
 router.get("/:id(\\d+)", csrfProtection, async (req, res) => {
     const questionId = parseInt(req.params.id, 10);
     const question = await Question.findByPk(questionId, { include: User });
+    // console.log(question.title, question.content);
+    const content = question.content;
 
-    res.render("question", { question, csrfToken: req.csrfToken() });
+    res.render("question", { question, content, csrfToken: req.csrfToken() });
 });
 
 router.post("/:id(\\d+)/delete", requireAuth, asyncHandler(async (req, res) => {
