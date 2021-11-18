@@ -12,9 +12,20 @@ block content
                 a asked on: #{(question.updatedAt).toString().split(' ').slice(0,4).join(' ')}
             if locals.user
                 div.question-buttons
-                    if locals.authenticated
-                        form(action=`/questions/${question.id}/answers`, method='get')
-                            button(id=`question-${question.id}`) Answer
                     if locals.user.id === question.userId
                         form(action=`/questions/${question.id}/delete` method='post')
                             button.delete-button Delete
+        if errors
+                div.errors
+                    p The following error occured:
+                    ul
+                        each error in errors
+                            li=error
+    if locals.authenticated
+        form(action=`/answers`, method='post')
+                input(type='hidden' name='_csrf' value=csrfToken)
+                input(type="hidden", name="questionId", value=question.id)
+                input(type='hidden' name='userId' value=locals.user.id)
+                input(type='hidden' name='answerScore' value=0)
+                textarea.form-box(name='content' placeholder="Enter your Answer here")
+                button.signup-button Submit Answer
