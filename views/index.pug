@@ -7,9 +7,12 @@ append head
   script(src="/javascripts/index.js" type="module" defer)
 
 block content
-  div.title
-    h1 welcome
-    h1 to
-    h1 nap-overflow
-    img(src='https://www.pngitem.com/pimgs/m/6-65727_png-v-girl-sleep-cartoon-png-transparent-png.png' )
-    h3 Your Napping is our concern!!
+  if locals.authenticated 
+    a(href='/questions')
+  else
+    div.title
+      h1 welcome
+      h1 to
+      h1 nap-overflow
+      img(src='https://www.pngitem.com/pimgs/m/6-65727_png-v-girl-sleep-cartoon-png-transparent-png.png' )
+      h3 Your Napping is our concern!!
