@@ -16,11 +16,11 @@ li a {
       font-size: 120%;
       font-weight: normal;
       text-decoration: none;
-      color:rgb(100, 114, 237);
+      color: #539987;
 }
 
 li a:hover {
-      color:cornflowerblue;
+      color:#52FFB8;
 }
 
 .questions {
@@ -39,6 +39,7 @@ li span {
 }
 
 d:nth-child(2) {
+      color:#2F243A;
       margin-top: 7px;
       margin-bottom: 15px;
       display:block;
@@ -54,6 +55,7 @@ li {
 }
 
 d:nth-child(3) {
+      color:#2F243A;
       padding-right: 5%;
       font-size: 80%;
       text-align:end;
