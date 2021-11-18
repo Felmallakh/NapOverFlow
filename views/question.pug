@@ -19,9 +19,15 @@ block content
     if answers
       div.answer-container
         each answer in answers
-            div.answer-content= answer.content
+            if user
+              button.upvote &#8593
+              p.upvote-text Upvote this answer
             div.score #{answer.score}
-            p answered by: #{answer.User.displayName} on #{(answer.createdAt).toString().split(' ').slice(0,4).join(' ')}
+            if user
+              button.downvote &#8595
+              p.downvote-text Downvote this answer
+            div.answer-content= answer.content
+              p answered by: #{answer.User.displayName} on #{(answer.createdAt).toString().split(' ').slice(0,4).join(' ')}
             if answer.userId == user.id
               form(action=`/answers/${answer.id}/delete` method="POST")
                 button.delete-button Delete
@@ -31,3 +37,4 @@ block content
               p.body Your Answer
               textarea.form-box(style='resize: none',name ='answerContents')
               button.submit(name='submitAnswer') Submit Answer
+  script(src="/javascripts/voting.js" type="module" defer)
