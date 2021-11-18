@@ -22,10 +22,8 @@ module.exports = {
         type: Sequelize.INTEGER,
         references: { model: 'Questions' }
       },
-      scoreId: {
-        allowNull: false,
-        type: Sequelize.INTEGER,
-        references: { model: 'ScoringAnswers' }
+      score: {
+        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,

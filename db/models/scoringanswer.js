@@ -2,11 +2,11 @@
 module.exports = (sequelize, DataTypes) => {
   const ScoringAnswer = sequelize.define('ScoringAnswer', {
     vote: DataTypes.BOOLEAN,
-    score: DataTypes.INTEGER,
+    answerId: DataTypes.INTEGER,
     userId: DataTypes.INTEGER
   }, {});
   ScoringAnswer.associate = function (models) {
-    ScoringAnswer.belongsTo(models.User, { foreignKey: 'userId' });
+    ScoringAnswer.belongsTo(models.Answer, { foreignKey: 'answerId' });
   };
   return ScoringAnswer;
 };
