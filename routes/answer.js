@@ -25,7 +25,7 @@ router.get('/questions/:questionId(\\d+)/answers',
   asyncHandler(async (req, res) => {
     const questionId = req.params.questionId;
     const question = await db.Question.findByPk(questionId);
-    const answer = db.Answer.build();
+    // const answer = db.Answer.build();
     res.render('answer', {
       title: 'Add Answer',
       question,
@@ -41,14 +41,15 @@ router.post("/questions/:id/answers",
   asyncHandler(async (req, res) => {
     const questionId = req.params.id;
     const userId = res.locals.user.id;
-    const score = await db.ScoringAnswer.create();
-    const scoreId = score.id;
+    const scoreT = await db.ScoringAnswer.create();
+    const score = 0;
     const { answerContents } = req.body;
 
-    const answer = db.Answer.build({
+    const answer = await db.Answer.build({
       content: answerContents,
       userId,
-      questionId
+      questionId,
+      score
     });
     await answer.save();
     res.redirect(`/questions/${questionId}`);
