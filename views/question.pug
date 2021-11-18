@@ -28,9 +28,10 @@ block content
               p.downvote-text Downvote this answer
             div.answer-content= answer.content
               p answered by: #{answer.User.displayName} on #{(answer.createdAt).toString().split(' ').slice(0,4).join(' ')}
-            if answer.userId == user.id
-              form(action=`/answers/${answer.id}/delete` method="POST")
-                button.delete-button Delete
+            if user
+              if answer.userId == user.id
+                form(action=`/answers/${answer.id}/delete` method="POST")
+                  button.delete-button Delete
         if user
           form.answer-form(action=`/questions/${question.id}/answers`, method='post')
               input(type='hidden',name='_csrf',value=csrfToken)
