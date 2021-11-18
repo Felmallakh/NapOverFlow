@@ -19,7 +19,8 @@ block content
     if answers
       div.answer-container
         each answer in answers
-            div= answer.content
+            div.asnwer-content= answer.content
+            p answered by: #{answer.User.displayName} on #{answer.createdAt}
             if answer.userId == user.id
               form(action=`/answers/${answer.id}/delete` method="POST")
                 button.delete-button Delete
