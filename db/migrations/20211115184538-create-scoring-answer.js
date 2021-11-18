@@ -12,12 +12,10 @@ module.exports = {
         type: Sequelize.BOOLEAN
       },
       answerId: {
-        allowNull: false,
         type: Sequelize.INTEGER,
         references: { model: 'Answers' }
       },
       userId: {
-        allowNull: false,
         type: Sequelize.INTEGER,
         references: { model: 'Users' }
       },
