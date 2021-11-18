@@ -23,6 +23,7 @@ module.exports = {
         references: { model: 'Questions' }
       },
       score: {
+        allowNull: false,
         type: Sequelize.INTEGER
       },
       createdAt: {
