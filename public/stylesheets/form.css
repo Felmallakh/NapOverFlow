@@ -12,7 +12,7 @@
 }
 
 .cancel_button > a:hover {
-    box-shadow: 0 0 3pt 2pt #6681f7;
+    box-shadow: 0 0 3pt 2pt #AC9FBB;
 }
 
 button {
@@ -24,6 +24,7 @@ button {
 
 h2 {
     font-size: 40px;
+    color:#AC9FBB;
 }
 
 .sign_up_form_container,
@@ -32,9 +33,9 @@ h2 {
     flex-direction: column;
     align-items: center;
     border: 1px solid black;
-    background-color: #22389B;
-    width: 20%;
-    border-radius: 4px;
+    background-color: #2F243A;
+    width: 25%;
+    border-radius: 6px;
     box-shadow: 0 0 2px black;
     margin: auto;
     top: 50%;
@@ -62,10 +63,12 @@ h2 {
 }
 
 .submit_button > button:hover {
-    box-shadow: 0 0 3pt 2pt cornflowerblue;
+    box-shadow: 0 0 2pt 2pt #AC9FBB;
 }
 
 .submit_button > button {
+    color: white;
+    background-color: #539987;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -73,14 +76,18 @@ h2 {
     box-shadow: 0 0 2px black;
 }
 
+.cancel_button > a {
+    color:#AC9FBB
+}
+
 .links > a {
     display: flex;
     justify-content: center;
     text-decoration: none;
-    color: black;
+    color: #AC9FBB;
     margin: 10px 0 10px 0;
 }
 
 .links > a:hover {
-    box-shadow: 0 0 3pt 2pt cornflowerblue;
+    box-shadow: 0 0 3pt 2pt #AC9FBB;
 }

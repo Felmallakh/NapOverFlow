@@ -1,13 +1,10 @@
 const express = require('express');
 const router = express.Router();
 
-
-
 const { check, validationResult } = require('express-validator');
 const { asyncHandler, csrfProtection } = require("./utils");
 const { Question, User, Answer } = require('../db/models');
 const { requireAuth } = require('../auth');
-
 
 const questionValidator = [
     check('title')
