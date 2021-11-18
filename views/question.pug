@@ -23,8 +23,8 @@ block content
         each answer in answers
             div= answer.content
             if answer.userId == user.id
-              form(class="answer-utils" action=`/api/answers/${answer.id}/delete` method="POST")
-                button(class="answer-util-btn")  Delete
+              form(action=`/answers/${answer.id}/delete` method="POST")
+                button.delete-button Delete
     form(action=`/questions/${question.id}/answers`, method='post')
                 input(type='hidden',name='_csrf',value=csrfToken)
                 p.body Your Answer

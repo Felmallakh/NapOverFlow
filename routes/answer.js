@@ -115,7 +115,7 @@ router.post("/answers/:id/delete",
     const answerId = parseInt(req.params.id, 10);
     const answer = await db.Answer.findByPk(answerId);
     await answer.destroy();
-    res.redirect(`/question/${answer.questionId}`);
+    res.redirect(`/questions/${questionId}`);
   })
 );
 
