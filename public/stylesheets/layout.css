@@ -13,7 +13,7 @@ body {
 
 .nav_links_container {
     font-size: 14px;
-    background-color: #22389B;
+    background-color: #2f243a;
     width: 100%;
     height: 70px;
     display: flex;
@@ -69,8 +69,8 @@ body {
 }
 
 #home-page {
-    background-color: #22389B;
-    color: #6681f7;
+    background-color: #2f243a;
+    color: #AC9FBB;
     font-size: 30px;
     font-family: Lobster;
     text-decoration: none;
@@ -89,6 +89,10 @@ body {
     align-items: center;
 }
 
+.sign_links {
+    justify-content: space-around
+}
+
 button {
     width: 88%;
 }
@@ -103,7 +107,7 @@ button:hover {
 .logged_in,
 .sign_links > a,
 button {
-    color: white;
+    color: #AC9FBB;
     margin: 0px 5px 0px 5px;
     font-weight: 700;
     text-decoration: none;
@@ -114,38 +118,50 @@ button {
     padding: 5px;
 }
 
+/* #question-link {
+    position: relative;
+    left: 20%;
+} */
+
 footer {
-    border-top: 2px solid black;
+    border-top: 1px solid rgb(230, 230, 230);
     position: fixed;
     bottom: 0;
     width: 100%;
-    height: 60px;
-    background-color: #22389B;
+    height: 5%;
+    background-color: #444054;
 }
 
 .developers {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content:space-around;
 }
 
 .developers > div {
     display: flex;
     flex-direction: column;
-    align-items: center;
 }
 
 .developers > div > a {
+    padding-top: 5%;
+    padding-bottom: 2%;
     text-decoration: none;
-    color: white;
-    font-size: 20px;
+    color:#AC9FBB;
+    font-size:120%;
     margin: 0 0 5px 0;
 }
 
+.developers > div > a:hover {
+    text-decoration: none;
+    color: #b1ede8;
+}
+
 .footer-title {
+    padding-top:5px;
     display: flex;
     justify-content: center;
-    color: yellow;
+    color:#AC9FBB;
     margin: 0 0 5px 0;
     font-size: 14px;
 }
