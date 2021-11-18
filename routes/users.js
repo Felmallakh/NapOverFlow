@@ -40,6 +40,7 @@ router.post('/login', csrfProtection, loginValidators,
 
         if (passwordMatch) {
           loginUser(req, res, user);
+          return;
         };
       }
       errors.push('Login failed for the given email address and password');
