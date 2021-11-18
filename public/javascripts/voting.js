@@ -1,5 +1,3 @@
-const { Question } = require('../../db/models');
-
 document.addEventListener('DOMContentLoaded', (e) => {
     const url = window.location.href;
     console.log(url);

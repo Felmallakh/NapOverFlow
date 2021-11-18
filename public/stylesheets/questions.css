@@ -116,3 +116,11 @@ h1 {
       height: 12rem;
       font-size: 1.4 rem;
 }
+
+.upvote-text, .downvote-text {
+      visibility: hidden;
+}
+
+button.upvote:hover + .upvote-text, button.downvote:hover + .downvote-text {
+      visibility: visible;
+}

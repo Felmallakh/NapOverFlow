@@ -42,14 +42,13 @@ router.post("/questions/:id/answers",
     const questionId = req.params.id;
     const userId = res.locals.user.id;
     const scoreT = await db.ScoringAnswer.create();
-    const score = 0;
     const { answerContents } = req.body;
 
     const answer = await db.Answer.build({
       content: answerContents,
       userId,
       questionId,
-      score
+      score: 0
     });
     await answer.save();
     res.redirect(`/questions/${questionId}`);
