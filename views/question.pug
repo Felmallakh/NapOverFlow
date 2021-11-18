@@ -13,9 +13,7 @@ block content
             if locals.user
                 div.question-buttons
                     if locals.authenticated
-                        form(action=`/questions/${question.id}/answers`, method='get')
-                            button(id=`question-${question.id}`) Answer
-                    if locals.user.id === question.userId
+                      if locals.user.id === question.userId
                         form(action=`/questions/${question.id}/delete` method='post')
                             button.delete-button Delete
     if answers
