@@ -36,7 +36,7 @@ router.get('/new', requireAuth, csrfProtection, (req, res) => {
 });
 
 router.get('/', asyncHandler(async (req, res, next) => {
-    const questions = await Question.findAll({ include: User });
+    const questions = await Question.findAll({ include: User, order: [["updatedAt", "DESC"]] });
     res.render('questions-list', { title: 'All Questions', questions });
 }))
 
