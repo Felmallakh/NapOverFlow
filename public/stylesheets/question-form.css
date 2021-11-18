@@ -1,12 +1,14 @@
 body {
     background-color: rgba(0, 0, 0, 0.1);
+
 }
 
 .content {
     display: flex;
     flex-direction: column;
-    transform: translate(120%, 25%);
+    transform: translate(120%, 10%);
     width: 30%;
+
 }
 
 .questionForm {
@@ -16,6 +18,7 @@ body {
     border-radius: 5px;
     padding: 20px;
     background-color: white;
+    margin-bottom: 100px;
 }
 
 form {
