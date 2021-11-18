@@ -21,7 +21,7 @@ const answerValidators=[
     .withMessage('Contents must not be more than 1000 characters more')
 ];
 
-router.get('/questions/:questionId(\\d+)/answers',csrfProtection,
+router.get('/questions/:questionId(\\d+)/answers',
   asyncHandler(async(req,res)=>{
       const questionId = req.params.questionId;
       const question=await db.Question.findByPk(questionId);
@@ -110,12 +110,11 @@ router.post("/questions/:id/answers",
   // }));
 
 router.post("/answers/:id/delete",
-  csrfProtection,
   asyncHandler(async (req, res) => {
     const answerId = parseInt(req.params.id, 10);
     const answer = await db.Answer.findByPk(answerId);
     await answer.destroy();
-    res.redirect(`/questions/${questionId}`);
+    res.redirect("back");
   })
 );
 
