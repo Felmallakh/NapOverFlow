@@ -12,5 +12,6 @@ block content
             form(action=`/questions/${question.id}/answers`, method='post')
                 input(type='hidden',name='_csrf',value=csrfToken)
                 p.body Your Answer
-                textarea(style='resize: none',name ='content') #{answer.content}
+                textarea(style='resize: none',name ='answerContents') #{answer.content}
                 button.submit(name='submitAnswer') Submit Answer
+

@@ -35,42 +35,26 @@ router.get('/questions/:questionId(\\d+)/answers',csrfProtection,
   }))
 
 
-router.post('/questions/:questionId(\\d+)/answers',csrfProtection,answerValidators,
-  asyncHandler(async(req,res)=>{
-    const questionId = req.params.questionId;
-    const question=await db.Question.findByPk(questionId);
+router.post("/questions/:id/answers",
+  csrfProtection,
+  answerValidators,
+  asyncHandler(async (req, res) => {
+    const questionId = req.params.id;
     const userId = res.locals.user.id;
-    const score= await db.ScoringAnswer.create({
-        userId,score:0
+    const score = await db.ScoringAnswer.create({ userId, score: 0 });
+    const scoreId = score.id;
+    const { answerContents } = req.body;
+
+    const answer = db.Answer.build({
+      content: answerContents,
+      userId,
+      questionId,
+      scoreId,
     });
-const scoreId=score.id;
-    const{
-        content
-    }=req.body;
-
-    const answer=db.Answer.build({
-        content,
-        userId,
-        questionId,
-        scoreId,
-    });
-    const validatorErrors=validationResult(req);
-
-    if (validatorErrors.isEmpty()) {
-        await answer.save();
-        res.redirect(`/questions/${questionId}`);
-      } else {
-        const errors = validatorErrors.array().map((error) => error.msg);
-        res.render('answers', {
-          title: 'Add Answer',
-          question,
-          answer,
-          errors,
-          csrfToken: req.csrfToken(),
-        });
-      }
-
-  }));
+    await answer.save();
+    res.redirect(`/questions/${questionId}`);
+  })
+);
 
   router.get('/answer/edit/:id(\\d+)', csrfProtection,
   asyncHandler(async (req, res) => {
@@ -114,24 +98,26 @@ const scoreId=score.id;
     }
   }));
 
-  router.get('/answer/delete/:id(\\d+)', csrfProtection,
-  asyncHandler(async (req, res) => {
-    const answerId = parseInt(req.params.id, 10);
-    const answer= await db.Answer.findByPk(answerId, { include: ['question'] });
-    res.render('answer-delete', {
-      title: 'Delete Answer',
-      answer,
-      csrfToken: req.csrfToken(),
-    });
-  }));
+  // router.get('/answer/delete/:id(\\d+)', csrfProtection,
+  // asyncHandler(async (req, res) => {
+  //   const answerId = parseInt(req.params.id, 10);
+  //   const answer= await db.Answer.findByPk(answerId, { include: ['question'] });
+  //   res.render('answer-delete', {
+  //     title: 'Delete Answer',
+  //     answer,
+  //     csrfToken: req.csrfToken(),
+  //   });
+  // }));
 
-router.post('/answer/delete/:id(\\d+)', csrfProtection,
+router.post("/answers/:id/delete",
+  csrfProtection,
   asyncHandler(async (req, res) => {
     const answerId = parseInt(req.params.id, 10);
     const answer = await db.Answer.findByPk(answerId);
     await answer.destroy();
-    res.redirect(`/question/${answer.questionId}`);
-  }));
+    res.redirect(`/questions/${questionId}`);
+  })
+);
 
 
   module.exports = router;
