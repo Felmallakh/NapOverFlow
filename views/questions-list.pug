@@ -6,11 +6,11 @@ append head
 
 block content
   d.page_content
-    h1= title
+    h1#all_questions= title
     ul.question_list
       each question in questions
         li.questions
           d: a(href=`/questions/${question.id}`) #{question.title}
           d  #{question.content}
-          d  asked #{(question.createdAt).toString().split(' ').slice(0,4).join(' ')}
+          d.asked_date_author  asked #{(question.createdAt).toString().split(' ').slice(0,4).join(' ')}
             span #{question.User.displayName}
