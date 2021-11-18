@@ -66,6 +66,11 @@ h1, h3 {
       white-space: normal;
 }
 
+h1 {
+      color: #2F243A;
+      padding-left: 25px;
+}
+
 
 #question{
       color:rgb(16, 24, 16);
