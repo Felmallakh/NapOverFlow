@@ -1,21 +1,51 @@
-document.addEventListener('DOMContentLoaded', (e) => {
-    const url = window.location.href;
-    console.log(url);
-    const brokenUrl = url.split('/');
-    const questionId = brokenUrl[brokenUrl.length - 1];
-    const deleteQuestion = document.querySelector(`.question-${questionId}`);
+const upvoteButton = document.querySelectorAll(".upvote");
+const downvoteButton = document.querySelectorAll(".downvote");
 
-    deleteQuestion.addEventListener('click', (async (event) => {
-        // send fetch request
-        // const question = await Question.findByPk(questionId);
+for (let button of upvoteButton) {
+    button.addEventListener('click', (async (e) => {
+        e.preventDefault();
+        const answerId = e.target.id;
+        const res = await fetch(`/answers/${answerId}/upvote`, {
+            method: "POST"
+        })
 
-        const ptag = document.createElement('p');
-        ptag.innerText = 'Are you sure?';
-        const divEle = document.querySelector('#question');
-        divEle.appendChild(ptag);
+        const data = await res.json();
 
+        const message = data.message;
 
-        // await question.destroy();
-        // window.location.href = "http://nap-overflow.herokuapp.com/questions";
+        const scoreClass = document.querySelector(`.score-${answerId}`);
+        let score = parseInt(scoreClass.innerText, 10);
+        console.log(score);
+        if (message === "upvote") {
+            score += 1;
+            scoreClass.innerText = score;
+        } else if (message === "downvote") {
+            score -= 1;
+            scoreClass.innerText = score;
+        }
     }));
-});
+};
+
+for (let button of downvoteButton) {
+    button.addEventListener('click', (async (e) => {
+        e.preventDefault();
+        const answerId = e.target.id;
+        const res = await fetch(`/answers/${answerId}/downvote`, {
+            method: "POST"
+        })
+
+        const data = await res.json();
+
+        const message = data.message;
+
+        const scoreClass = document.querySelector(`.score-${answerId}`);
+        let score = parseInt(scoreClass.innerText, 10);
+        if (message === "upvote") {
+            score += 1;
+            scoreClass.innerText = score;
+        } else if (message === "downvote") {
+            score -= 1;
+            scoreClass.innerText = score;
+        }
+    }));
+};

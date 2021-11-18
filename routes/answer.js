@@ -1,5 +1,6 @@
 const express = require('express');
 const { check, validationResult } = require('express-validator');
+const { TooManyRequests } = require('http-errors');
 
 const db = require('../db/models');
 const { csrfProtection, asyncHandler } = require('./utils');
@@ -117,5 +118,57 @@ router.post("/answers/:id/delete",
   })
 );
 
+router.post("/answers/:id/upvote", asyncHandler(async (req, res) => {
+  const answerId = req.params.id;
+  const userId = res.locals.user.id;
 
+  const scoringAnswer = await db.ScoringAnswer.findOne({
+    where: { userId, answerId }
+  });
+
+  if (!scoringAnswer) {
+    const newScoringAnswer = await db.ScoringAnswer.create({
+      vote: true, answerId, userId
+    });
+    // take previous score and upvote
+    res.json({ message: "upvote" });
+  } else if (scoringAnswer.vote === true && scoringAnswer.userId === userId) {
+    await scoringAnswer.destroy();
+    // take previous score and downvote once
+    res.json({ message: "downvote" });
+  }
+}));
+
+router.post("/answers/:id/downvote", asyncHandler(async (req, res) => {
+  const answerId = req.params.id;
+  const userId = res.locals.user.id;
+
+  const scoringAnswer = await db.ScoringAnswer.findOne({
+    where: { userId, answerId }
+  });
+
+  if (!scoringAnswer) {
+    const newScoringAnswer = await db.ScoringAnswer.create({
+      vote: false, answerId, userId
+    });
+    // take previous score and downvote
+    res.json({ message: "downvote" });
+  } else if (scoringAnswer.vote === false && scoringAnswer.userId === userId) {
+    await scoringAnswer.destroy();
+    // take previous score and upvote once
+    res.json({ message: "upvote" });
+  }
+}));
+
+
+// identify answer
+// take info send request to back-end
+// route handler
+// take in request from fetch call -> INSIDE route handler,
+// determine status of how the user interacts with the score
+// query db -> look for record that matches userId and answerId
+// if no record, make new record
+// else update/delete record
+// send response to front that will tell us what happened
+// DOM manipulation to determine what to do based on action taken through back
 module.exports = router;

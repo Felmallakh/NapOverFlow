@@ -37,7 +37,6 @@ router.get('/new', requireAuth, csrfProtection, (req, res) => {
 
 router.get('/', asyncHandler(async (req, res, next) => {
     const questions = await Question.findAll({ include: User, order: [["updatedAt", "DESC"]] });
-    questions.forEach(question => console.log(question.updatedAt));
     res.render('questions-list', { title: 'All Questions', questions });
 }))
 
@@ -68,14 +67,14 @@ router.get("/:id(\\d+)", csrfProtection, async (req, res) => {
     const content = question.content;
 
     const answers = await Answer.findAll({
-      where: { questionId },
-      include: User
+        where: { questionId },
+        include: User
     });
 
     res.render("question", { question, content, answers, csrfToken: req.csrfToken() });
 });
 
-router.post("/:id(\\d+)/delete", requireAuth,asyncHandler(async (req, res) => {
+router.post("/:id(\\d+)/delete", requireAuth, asyncHandler(async (req, res) => {
     const questionId = parseInt(req.params.id, 10);
     const question = await Question.findByPk(questionId);
     const answers = await Answer.findAll({ where: { questionId } });
@@ -84,7 +83,7 @@ router.post("/:id(\\d+)/delete", requireAuth,asyncHandler(async (req, res) => {
 
     await question.destroy();
     res.redirect("/questions");
-  })
+})
 );
 
 
