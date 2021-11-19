@@ -4,13 +4,14 @@ append head
     link(rel="stylesheet" href="/stylesheets/question-form.css")
 
 block content
+    h1#search_page_header Here's what we found:
     div(class="questions-container")
         ul
           if questions
             each question in questions
              li
               div.ques-link
-                 a(href=`/questions/${question.id}`) #{question.title}
+                 a.question_title(href=`/questions/${question.id}`) #{question.title}
               div !{question.content}
                 //- if user
                 //-   if question.userId == user.id
