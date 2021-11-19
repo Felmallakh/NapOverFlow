@@ -9,12 +9,10 @@ block content
           if questions
             each question in questions
              li
-              a(href=`/questions/${question.id}`)
-             h2 question.title
-             div !{question.content}
+              div.ques-link
+                 a(href=`/questions/${question.id}`) #{question.title}
+              div !{question.content}
                 //- if user
                 //-   if question.userId == user.id
                     //- form(action=`/questions/${question.id}/delete` method="POST")
                     //-  button Delete
-
-
