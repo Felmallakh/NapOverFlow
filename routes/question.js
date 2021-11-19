@@ -60,6 +60,7 @@ router.post('/', requireAuth, questionValidator, csrfProtection, asyncHandler(as
 router.get("/:id(\\d+)", csrfProtection, async (req, res) => {
     const questionId = parseInt(req.params.id, 10);
     const question = await Question.findByPk(questionId, { include: User });
+
     // console.log(question.title, question.content);
     const content = question.content;
 
@@ -75,8 +76,11 @@ router.get("/:id(\\d+)", csrfProtection, async (req, res) => {
     answers.forEach(answer => {
         if (answer.ScoringAnswers.length) {
             answer.ScoringAnswers.forEach(score => {
-                if (score.userId === res.locals.user.id) {
-                    persistObj[answer.id] = score.vote;
+                if (res.locals.user) {
+                    const loggedinUserId = res.locals.user.id;
+                    if (score.userId === loggedinUserId) {
+                        persistObj[answer.id] = score.vote;
+                    }
                 }
             })
         }
