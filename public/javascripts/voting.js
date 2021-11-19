@@ -24,7 +24,7 @@ for (let button of upvoteButton) {
             score -= 1;
             scoreClass.innerText = `${score}`;
         } else if (message === "upvote-reset") {
-            const otherButton = document.querySelector(".downvote.make-button-red");
+            const otherButton = document.getElementsByClassName(`downvote ${answerId}`)[0];
             otherButton.classList.remove("make-button-red");
             score += 1;
             scoreClass.innerText = `${score}`;
@@ -55,7 +55,7 @@ for (let button of downvoteButton) {
             score -= 1;
             scoreClass.innerText = `${score}`;
         } else if (message === "downvote-reset") {
-            const otherButton = document.querySelector(".upvote.make-button-green");
+            const otherButton = document.getElementsByClassName(`upvote ${answerId}`)[0];
             otherButton.classList.remove("make-button-green");
             score -= 1;
             scoreClass.innerText = `${score}`;

@@ -74,7 +74,11 @@ router.get("/:id(\\d+)", csrfProtection, async (req, res) => {
     let persistObj = {};
     answers.forEach(answer => {
         if (answer.ScoringAnswers.length) {
-            persistObj[answer.id] = answer.ScoringAnswers[0].vote;
+            answer.ScoringAnswers.forEach(score => {
+                if (score.userId === res.locals.user.id) {
+                    persistObj[answer.id] = score.vote;
+                }
+            })
         }
     });
 
@@ -88,7 +92,7 @@ router.post("/:id(\\d+)/delete", requireAuth, asyncHandler(async (req, res) => {
 
     answers.forEach(ans => {
         // console.log(ans)
-        ScoringAnswer.destroy({ where: { answerId: ans.id }});
+        ScoringAnswer.destroy({ where: { answerId: ans.id } });
         ans.destroy();
     })
 
