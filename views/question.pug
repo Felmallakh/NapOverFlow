@@ -27,11 +27,17 @@ block content
                 div#scoring Score
                   if user
                     form(action=`/answers/${answer.id}/upvote` method="POST")
-                      button(class=`upvote` id=`${answer.id}`) ▲
+                      if persistObj[answer.id]
+                        button(class=`upvote make-button-green` id=`${answer.id}`) ▲
+                      else
+                        button(class=`upvote` id=`${answer.id}`) ▲
                   div(class=`score-${answer.id}` id='score-text')= answer.score
                   if user
                     form(action=`/answers/${answer.id}/downvote` method="POST")
-                      button(class=`downvote` id=`${answer.id}`) ▼
+                      if persistObj[answer.id] == false
+                        button(class=`downvote make-button-red` id=`${answer.id}`) ▼
+                      else
+                        button(class=`downvote` id=`${answer.id}`) ▼
                 d(id=`answer-${answer.id}`)
                   h3.answer-content= answer.content
                   div.answer-info-content
