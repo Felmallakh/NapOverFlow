@@ -10,8 +10,22 @@ li:first-child{
       padding-left: 3%;
       color: #444054;
 }
+
+.all_questions_page_content {
+      border-radius: 5px;
+      background-color: #AC9FBB;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border-left: 1px solid rgba(193, 177, 211, 0.5);
+      min-height: calc(85vh - 50px);
+      margin-left: 20%;
+      margin-right: 15%;
+      /* box-shadow: 0 0 2px black; */
+}
+
 .page_content{
-      background-color: #AC9FBB ;
+      background-color: #AC9FBB;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -32,7 +46,7 @@ li a {
 }
 
 li a:hover {
-      color:#AC9FBB;
+      color:#539987;
 }
 
 .questions {
