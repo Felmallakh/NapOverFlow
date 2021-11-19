@@ -6,7 +6,7 @@ const loginUser = (req, res, user) => {
     userId: user.id
   }
   req.session.save(() => {
-    res.redirect('/')
+    res.redirect('/questions')
   })
 }
 
