@@ -32,18 +32,18 @@ block content
                         a Posted on #{(answer.createdAt).toString().split(' ').slice(0,4).join(' ')}
                       div#scoring Score
                         if user
-                        form(action=`/answers/${answer.id}/upvote` method="POST")
-                          if persistObj[answer.id]
-                            button(class=`upvote make-button-green` id=`${answer.id}`) ▲
-                          else
-                            button(class=`upvote` id=`${answer.id}`) ▲
+                          form(action=`/answers/${answer.id}/upvote` method="POST")
+                            if persistObj[answer.id]
+                              button(class=`upvote ${answer.id} make-button-green` id=`${answer.id}`) ▲
+                            else
+                              button(class=`upvote ${answer.id}` id=`${answer.id}`) ▲
                         div(class=`score-${answer.id}` id='score-text')= answer.score
                         if user
                           form(action=`/answers/${answer.id}/downvote` method="POST")
                             if persistObj[answer.id] == false
-                              button(class=`downvote make-button-red` id=`${answer.id}`) ▼
+                              button(class=`downvote ${answer.id} make-button-red` id=`${answer.id}`) ▼
                             else
-                              button(class=`downvote` id=`${answer.id}`) ▼
+                              button(class=`downvote ${answer.id}` id=`${answer.id}`) ▼
                 if user
                   div.answer-button
                     if answer.userId == user.id
