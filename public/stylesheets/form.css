@@ -1,4 +1,7 @@
+body{
+      background-color:rgb(125, 105, 151);
 
+}
 .cancel_button {
     display: flex;
     justify-content: center;

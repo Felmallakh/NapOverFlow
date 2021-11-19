@@ -7,7 +7,7 @@ block content
   d.page_content
     .content
     .main
-      h1 #{question.title}
+      h1 Q: #{question.title}
       div#question
         h3.question-content= content
         div.question-info-content
@@ -24,26 +24,26 @@ block content
         if answers
           each answer in answers
             d(id=`answer-${answer.id}`)
-                div#scoring Score
-                  if user
-                    form(action=`/answers/${answer.id}/upvote` method="POST")
-                      if persistObj[answer.id]
-                        button(class=`upvote make-button-green` id=`${answer.id}`) ▲
-                      else
-                        button(class=`upvote` id=`${answer.id}`) ▲
-                  div(class=`score-${answer.id}` id='score-text')= answer.score
-                  if user
-                    form(action=`/answers/${answer.id}/downvote` method="POST")
-                      if persistObj[answer.id] == false
-                        button(class=`downvote make-button-red` id=`${answer.id}`) ▼
-                      else
-                        button(class=`downvote` id=`${answer.id}`) ▼
                 d(id=`answer-${answer.id}`)
                   h3.answer-content= answer.content
                   div.answer-info-content
                       div.answer-info
                         a Answered by: #{answer.User.displayName}
                         a Posted on #{(answer.createdAt).toString().split(' ').slice(0,4).join(' ')}
+                      div#scoring Score
+                        if user
+                        form(action=`/answers/${answer.id}/upvote` method="POST")
+                          if persistObj[answer.id]
+                            button(class=`upvote make-button-green` id=`${answer.id}`) ▲
+                          else
+                            button(class=`upvote` id=`${answer.id}`) ▲
+                        div(class=`score-${answer.id}` id='score-text')= answer.score
+                        if user
+                          form(action=`/answers/${answer.id}/downvote` method="POST")
+                            if persistObj[answer.id] == false
+                              button(class=`downvote make-button-red` id=`${answer.id}`) ▼
+                            else
+                              button(class=`downvote` id=`${answer.id}`) ▼
                 if user
                   div.answer-button
                     if answer.userId == user.id
@@ -52,7 +52,7 @@ block content
           if user
             form.answer-form(action=`/questions/${question.id}/answers`, method='post')
                 input(type='hidden',name='_csrf',value=csrfToken)
-                p.body Your Answer
+                p.ans Your Answer
                 textarea.form-box(style='resize: none',name ='answerContents')
                 button.submit(name='submitAnswer') Submit Answer
   script(src="/javascripts/voting.js" type="module")
