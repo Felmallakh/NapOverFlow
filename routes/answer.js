@@ -118,12 +118,20 @@ router.post('/answer/edit/:id(\\d+)', csrfProtection, answerValidators,
 //   })
 // );
 
-router.delete("/answers/:id", asyncHandler(async(req, res) => {
-    const answer = await db.Answer.findByPk(req.params.id);
-    await answer.destroy();
+router.delete("/answers/:id", asyncHandler(async (req, res) => {
+  const answerId = req.params.id;
+  const answer = await db.Answer.findByPk(answerId);
+  const scoreAnswer = await db.ScoringAnswer.findAll({ where: { answerId } });
 
-    res.json({ message: "Success"})
-}))
+  if (scoreAnswer) {
+    scoreAnswer.forEach((async (score) => {
+      await score.destroy();
+    }));
+  };
+  await answer.destroy();
+
+  res.json({ message: "Success" })
+}));
 
 router.post("/answers/:id/upvote", asyncHandler(async (req, res) => {
   const answerId = req.params.id;
