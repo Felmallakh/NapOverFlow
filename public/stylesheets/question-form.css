@@ -118,3 +118,6 @@ input {
 .question_title, .question_title:visited {
     color:#2F243A;
 }
+.question_title:hover {
+    color:#539987;
+}
