@@ -10,7 +10,7 @@ block content
     ul.question_list
       each question in questions
         li.questions
-          d: a(href=`/questions/${question.id}`) #{question.title}
+          d.question_titles: a.question_links(href=`/questions/${question.id}`) #{question.title}
           d  #{question.content}
           d.asked_date_author  Asked on  #{(question.createdAt).toString().split(' ').slice(0,4).join(' ')}
             span Asked by  #{question.User.displayName}
