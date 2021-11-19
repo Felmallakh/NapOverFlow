@@ -7,6 +7,17 @@ const { csrfProtection, asyncHandler } = require('./utils');
 
 const router = express.Router();
 
+const increaseScore = async (answer) => {
+  let currentScore = answer.dataValues.score;
+  const newScore = currentScore + 1;
+  return await answer.update({ score: newScore });
+};
+
+const decreaseScore = async (answer) => {
+  let currentScore = answer.dataValues.score;
+  const newScore = currentScore - 1;
+  return await answer.update({ score: newScore });
+};
 
 router.get('/answers/:id(\\d+)', asyncHandler(async (req, res) => {
   const answerId = parseInt(req.params.id, 10);
@@ -141,15 +152,24 @@ router.post("/answers/:id/upvote", asyncHandler(async (req, res) => {
     where: { userId, answerId }
   });
 
+  const answer = await db.Answer.findByPk(answerId);
+
   if (!scoringAnswer) {
     const newScoringAnswer = await db.ScoringAnswer.create({
       vote: true, answerId, userId
     });
-    // take previous score and upvote
+    // make new score and upvote
+    await increaseScore(answer);
     res.json({ message: "upvote" });
+  } else if (scoringAnswer.vote === false && scoringAnswer.userId === userId) {
+    await scoringAnswer.destroy();
+    // take previous score and upvote once
+    await increaseScore(answer);
+    res.json({ message: "upvote-reset" });
   } else if (scoringAnswer.vote === true && scoringAnswer.userId === userId) {
     await scoringAnswer.destroy();
     // take previous score and downvote once
+    await decreaseScore(answer);
     res.json({ message: "downvote" });
   }
 }));
@@ -162,15 +182,25 @@ router.post("/answers/:id/downvote", asyncHandler(async (req, res) => {
     where: { userId, answerId }
   });
 
+  const answer = await db.Answer.findByPk(answerId);
+
   if (!scoringAnswer) {
     const newScoringAnswer = await db.ScoringAnswer.create({
       vote: false, answerId, userId
     });
-    // take previous score and downvote
+    // make new score and downvote
+    await decreaseScore(answer);
     res.json({ message: "downvote" });
+  } else if (scoringAnswer.vote === true && scoringAnswer.userId === userId) {
+    console.log(scoringAnswer.vote);
+    await scoringAnswer.destroy();
+    // take previous score and downvote once
+    await decreaseScore(answer);
+    res.json({ message: "downvote-reset" });
   } else if (scoringAnswer.vote === false && scoringAnswer.userId === userId) {
     await scoringAnswer.destroy();
     // take previous score and upvote once
+    await increaseScore(answer);
     res.json({ message: "upvote" });
   }
 }));
