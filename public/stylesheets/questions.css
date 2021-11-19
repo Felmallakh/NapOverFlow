@@ -2,6 +2,10 @@ li:first-child{
       border-top: 1px solid rgb(200, 200, 200)
 }
 
+#all_questions {
+      padding-left: 3%;
+}
+
 .page_content {
       font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       display: block;
@@ -24,11 +28,11 @@ li a {
       font-size: 120%;
       font-weight: normal;
       text-decoration: none;
-      color:#2F243A;
+      color:#539987;
 }
 
 li a:hover {
-      color:#2F243A;
+      color:#52FFB8;
 }
 
 .questions {
@@ -61,7 +65,7 @@ li {
       padding: 10px;
 }
 
-d:nth-child(3) {
+.asked_date_author {
       padding-right: 5%;
       font-size: 80%;
       text-align:end;
@@ -190,3 +194,4 @@ h1, h3 {
       display:block;
       align-items: center;
 } */
+
