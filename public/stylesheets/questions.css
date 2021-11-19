@@ -191,6 +191,10 @@ h1, h3 {
       align-items: center;
 } */
 
+.ques-link{
+      font-size: 30px;
+
+
 #scoring {
       display: flex;
       flex-direction: column;
@@ -221,4 +225,5 @@ h1, h3 {
       border: 2px solid rgba(255, 0, 0, 0.8);
       color: rgba(255, 0, 0, 0.8);
       box-shadow: 0 0 10px gray;
+
 }
