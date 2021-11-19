@@ -45,7 +45,7 @@ block content
                             else
                               button(class=`downvote` id=`${answer.id}`) ▼
                 if user
-                  div.answer-button
+                  div.answer-container
                     if answer.userId == user.id
                       form(action=`/answers/${answer.id}/delete` method="POST")
                         button.delete-button(id=`${answer.id}`) Delete
