@@ -65,10 +65,20 @@ router.get("/:id(\\d+)", csrfProtection, async (req, res) => {
 
     const answers = await Answer.findAll({
         where: { questionId },
-        include: User
+        include: [User, ScoringAnswer]
+    });
+    // console.log(answers);
+
+    // console.log(answers[0].ScoringAnswers[0].vote);
+
+    let persistObj = {};
+    answers.forEach(answer => {
+        if (answer.ScoringAnswers.length) {
+            persistObj[answer.id] = answer.ScoringAnswers[0].vote;
+        }
     });
 
-    res.render("question", { question, content, answers, csrfToken: req.csrfToken() });
+    res.render("question", { question, content, answers, persistObj, csrfToken: req.csrfToken() });
 });
 
 router.post("/:id(\\d+)/delete", requireAuth, asyncHandler(async (req, res) => {
