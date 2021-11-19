@@ -1,10 +1,21 @@
 # NapOverFlow Clone Group Project #
 
-Nap Overflow is a Stack Overflow clone, it is an application that allows users to ask questions and answers questions that can be viewed and voted.
+<h2> Summary </h2>
+<a href="https://nap-overflow.herokuapp.com/">Nap Overflow</a></h4> is an application inspired by Stack Overflow built using JavaScript utilizing pug architecture. Nap Overflow allows users to:
+<br></br>
+<ul>
+  <li>Create an account</li>
+  <li>Log in/out</li>
+  <li>Ask questions</li>
+  <li>Search for answers to their questions</li>
+  <li>Answer previously asked questions</li>
+  <li>Upvote/Downvote answers</li>
+</ul>
 
+<h2> Overall Structure </h2>
+<h4> Back end </h4>
+<p>Nap Overflow was built using JavaScript, utilizing a postgreSQL Database. Backend requests are RESTful, and associations are used to prefetch data in order to minimize SQL queries to the database.</p>
 <h4> Documentation: <a href="https://github.com/Felmallakh/NapOverFlow/wiki">Nap Overflow Wiki</a></h4>
-
-<h4> Link to Live Application: <a href="https://nap-overflow.herokuapp.com/">Nap Overflow</a></h4>
 
 <h2> Features </h2>
 <ul>
