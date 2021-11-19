@@ -3,7 +3,7 @@ const router = express.Router();
 
 const { check, validationResult } = require('express-validator');
 const { asyncHandler, csrfProtection } = require("./utils");
-const { Question, User, Answer, ScoringAnswer } = require('../db/models');
+const { Question, User, Answer, ScoringAnswer } = require("../db/models");
 const { requireAuth } = require('../auth');
 
 const questionValidator = [
@@ -86,12 +86,17 @@ router.post("/:id(\\d+)/delete", requireAuth, asyncHandler(async (req, res) => {
     const question = await Question.findByPk(questionId);
     const answers = await Answer.findAll({ where: { questionId } });
 
-    answers.forEach(ans => ans.destroy());
+    answers.forEach(ans => {
+        // console.log(ans)
+        ScoringAnswer.destroy({ where: { answerId: ans.id }});
+        ans.destroy();
+    })
+
+    // answers.forEach(ans => ans.destroy());
 
     await question.destroy();
     res.redirect("/questions");
 })
 );
-
 
 module.exports = router;

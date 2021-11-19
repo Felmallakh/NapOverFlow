@@ -19,7 +19,7 @@ block content
                 if locals.authenticated
                   if locals.user.id === question.userId
                     form(action=`/questions/${question.id}/delete` method='post')
-                      button.delete-button Delete
+                      button.delete-q-button Delete
       div.answer-container
         if answers
           each answer in answers
