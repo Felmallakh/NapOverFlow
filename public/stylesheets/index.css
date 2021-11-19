@@ -27,8 +27,8 @@ h2 {
   -webkit-background-clip: text;
   text-transform: uppercase;
   font-size: 100px;
-  line-height: .75;
-  margin: 10px 0;
+  line-height: .85;
+  margin: 6px;
 }
 
 h3{
