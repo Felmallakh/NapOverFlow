@@ -42,7 +42,7 @@ li a {
       font-size: 120%;
       font-weight: normal;
       text-decoration: none;
-      color:#539987;
+      /* color:#539987; */
 }
 
 li a:hover {
@@ -60,6 +60,13 @@ li a:hover {
       display: block;
       flex-direction: column;
       list-style: none;
+
+}
+
+.q-content {
+      margin-left: 28px;
+      margin-right: 50px;
+
 }
 
 li span {
