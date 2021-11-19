@@ -103,5 +103,18 @@ input {
     height: 35px;
 }
 
+.questions-container {
+    /* background-color:#AC9FBB; */
+    margin-left: 16%;
+    margin-right: 10%
+}
 
+#search_page_header {
+    color: #2F243A;
+    margin-left: 19%;
+    margin-top: 2%;
+}
 
+.question_title, .question_title:visited {
+    color:#2F243A;
+}
