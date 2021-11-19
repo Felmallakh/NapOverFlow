@@ -71,6 +71,7 @@ body {
 }
 
 #home-page {
+    position: relative;
     background-color: #2f243a;
     color: #AC9FBB;
     font-size: 30px;

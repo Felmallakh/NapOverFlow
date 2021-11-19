@@ -23,24 +23,25 @@ block content
       div.answer-container
         if answers
           each answer in answers
-              if user
-                form(action=`/answers/${answer.id}/upvote` method="POST")
-                  button(class=`upvote` id=`${answer.id}`) ▲
-              div(class=`score-${answer.id}`)= answer.score
-              if user
-                form(action=`/answers/${answer.id}/downvote` method="POST")
-                  button(class=`downvote` id=`${answer.id}`) ▼
-              d(id=`answer-${answer.id}`)
-                h3.answer-content= answer.content
-                div.answer-info-content
-                    div.answer-info
-                      a Answered by: #{answer.User.displayName}
-                      a Posted on #{(answer.createdAt).toString().split(' ').slice(0,4).join(' ')}
-              if user
-                div.answer-button
-                  if answer.userId == user.id
-                    form(action=`/answers/${answer.id}/delete` method="POST")
-                      button.delete-button Delete
+            d(id=`answer-${answer.id}`)
+                if user
+                  form(action=`/answers/${answer.id}/upvote` method="POST")
+                    button(class=`upvote` id=`${answer.id}`) ▲
+                div(class=`score-${answer.id}`)= answer.score
+                if user
+                  form(action=`/answers/${answer.id}/downvote` method="POST")
+                    button(class=`downvote` id=`${answer.id}`) ▼
+                d(id=`answer-${answer.id}`)
+                  h3.answer-content= answer.content
+                  div.answer-info-content
+                      div.answer-info
+                        a Answered by: #{answer.User.displayName}
+                        a Posted on #{(answer.createdAt).toString().split(' ').slice(0,4).join(' ')}
+                if user
+                  div.answer-button
+                    if answer.userId == user.id
+                      form(action=`/answers/${answer.id}/delete` method="POST")
+                        button.delete-button(id=`${answer.id}`) Delete
           if user
             form.answer-form(action=`/questions/${question.id}/answers`, method='post')
                 input(type='hidden',name='_csrf',value=csrfToken)
