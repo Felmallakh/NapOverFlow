@@ -69,7 +69,7 @@ li {
 }
 
 h1, h3 {
-      word-break:normal ;
+      word-break: normal;
       white-space: normal;
 }
 
@@ -97,7 +97,7 @@ h1, h3 {
 
 .answer-form{
       margin: .5rem 0;
-      padding: 0 1rem;
+      /* padding: 0 1rem; */
       width: 100%;
       border-radius: 10px;
       background-color:white;
@@ -160,8 +160,8 @@ h1, h3 {
 }
 
 .answer-container{
-    margin: 0.5rem 0;
-    padding: 0 1rem;
+    /* margin: 0.5rem 0; */
+    /* padding: 0 1rem; */
     width: 100%;
     border-radius: 10px;
     background-color: #e4e4ec;
@@ -169,6 +169,7 @@ h1, h3 {
 
 
 .answer-content{
+      display: inline-flex;
       font-size: 1.20em;
       font-weight: bold;
       align-items: center;
@@ -176,7 +177,7 @@ h1, h3 {
       gap: 1rem;
 }
 
-.question-info-content,.answer-info-content{
+.question-info-content, .answer-info-content{
       display: flex;
       justify-content: space-between;
 }
@@ -189,3 +190,40 @@ h1, h3 {
       display:block;
       align-items: center;
 } */
+
+.ques-link{
+      font-size: 30px;
+
+
+#scoring {
+      display: flex;
+      flex-direction: column;
+      flex: wrap;
+      align-items: flex-end;
+      margin-right: 20px;
+}
+
+.upvote, .downvote {
+      color:#AC9FBB;
+      width: 26px;
+      margin-top: 5px;
+      margin: 5px 0 5px 0;
+}
+
+#score-text {
+      margin-right: 7px;
+      font-size: 24px;
+}
+
+.make-button-green {
+      border: 2px solid lightgreen;
+      color: lightgreen;
+      box-shadow: 0 0 10px gray;
+}
+
+.make-button-red {
+      border: 2px solid rgba(255, 0, 0, 0.8);
+      color: rgba(255, 0, 0, 0.8);
+      box-shadow: 0 0 10px gray;
+
+}

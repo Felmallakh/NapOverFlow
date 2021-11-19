@@ -1,9 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
 body {
   background-color:white;
+  width:100%
 }
 
 .title {
+
+  position: relative;
   font-family: "Montserrat";
   text-align: center;
   color: #FFF;
@@ -15,7 +18,8 @@ body {
   letter-spacing: 1px;
 }
 
-h1 {
+h2 {
+ 
   background-image: url(https://64.media.tumblr.com/f4fab2ca2196d4472ed56bcd5bca39fe/f145147b69889cf3-5f/s640x960/59b51f10c0763ba55b521718bece7ab0a64f5acc.gif);
   background-size: cover;
   color: transparent;
