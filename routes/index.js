@@ -31,7 +31,7 @@ router.get(
       },
     });
 
-    res.render("index", { questions, searchTerm });
+    res.render("search", { questions, searchTerm });
   })
 );
 
