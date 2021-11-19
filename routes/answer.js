@@ -109,25 +109,6 @@ router.post('/answer/edit/:id(\\d+)', csrfProtection, answerValidators,
     }
   }));
 
-// router.get('/answer/delete/:id(\\d+)', csrfProtection,
-// asyncHandler(async (req, res) => {
-//   const answerId = parseInt(req.params.id, 10);
-//   const answer= await db.Answer.findByPk(answerId, { include: ['question'] });
-//   res.render('answer-delete', {
-//     title: 'Delete Answer',
-//     answer,
-//     csrfToken: req.csrfToken(),
-//   });
-// }));
-
-// router.post("/answers/:id/delete",
-//   asyncHandler(async (req, res) => {
-//     const answerId = parseInt(req.params.id, 10);
-//     const answer = await db.Answer.findByPk(answerId);
-//     await answer.destroy();
-//     res.redirect("back");
-//   })
-// );
 
 router.delete("/answers/:id", asyncHandler(async (req, res) => {
   const answerId = req.params.id;

@@ -1,6 +1,5 @@
 body {
-    background-color: rgba(0, 0, 0, 0.1);
-
+    background-color:rgb(125, 105, 151);
 }
 
 .content {
@@ -100,6 +99,9 @@ input {
 }
 
 #search-bar {
-    width: 80%;
+    width: 150%;
     height: 35px;
 }
+
+
+

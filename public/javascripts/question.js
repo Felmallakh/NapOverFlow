@@ -8,7 +8,8 @@ document.addEventListener("DOMContentLoaded", e => {
                   const answerIdToDelete = e.target.id
                   console.log(answerIdToDelete, '<-- answer id to delete')
 
-                  const res = await fetch(`/answers/${answerIdToDelete}`, { method: "DELETE" })
+                  const res = await fetch(`/answers/${answerIdToDelete}`,
+                   { method: "DELETE" })
 
                   const data = await res.json()
                   console.log(data, '<-- fetched object')

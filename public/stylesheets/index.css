@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
 body {
-  background-color:white;
+  background-color:rgb(125, 105, 151);
   width:100%
 }
 
@@ -19,7 +19,7 @@ body {
 }
 
 h2 {
- 
+
   background-image: url(https://64.media.tumblr.com/f4fab2ca2196d4472ed56bcd5bca39fe/f145147b69889cf3-5f/s640x960/59b51f10c0763ba55b521718bece7ab0a64f5acc.gif);
   background-size: cover;
   color: transparent;
@@ -30,11 +30,13 @@ h2 {
   line-height: .75;
   margin: 10px 0;
 }
+
 h3{
     color: black;
     font-size:30px;
-    font-family: "Georgia";
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
 }
+
 img{
     border-radius: 50%;
     width:200px;

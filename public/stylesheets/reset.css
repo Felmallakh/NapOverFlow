@@ -1,6 +1,8 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color:rgb(125, 105, 151);
+
 }
 
 a {
@@ -25,3 +27,4 @@ body, header, nav {
 h1 {
   font-size: 2rem;
 }
+

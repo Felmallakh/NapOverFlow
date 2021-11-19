@@ -13,6 +13,8 @@ body {
     height: 100%;
     margin: auto;
     margin-bottom: 50px;
+    background-color:rgb(125, 105, 151);
+
 }
 
 .nav_links_container {
@@ -38,7 +40,7 @@ body {
 
 
 #search-bar {
-    width: 80%;
+    width: 150%;
     height: 35px;
     font-size: 15px;
     background-color: #444054;
@@ -74,15 +76,16 @@ body {
     position: relative;
     background-color: #2f243a;
     color: #AC9FBB;
-    font-size: 30px;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-weight:bolder;
+    font-size: 32px;
+    font-family:lobster;
+    /* font-weight:bolder; */
     text-decoration: none;
+    margin-bottom: 8px;
 }
 
-#home-page:hover {
+/* #home-page:hover {
     color: #539987;
-}
+} */
 
 .sign_links, button {
     width: 25%;
