@@ -4,25 +4,41 @@ body{
 
 }
 li:first-child{
-      border-top: 1px solid rgb(200, 200, 200)
+      border-top: 1px solid rgba(193, 177, 211, 0.5)
 }
 
 #all_questions {
       padding-left: 3%;
+      color: #444054;
 }
-.page_content{
-      background-color: #AC9FBB ;
+
+.all_questions_page_content {
+      border-radius: 5px;
+      background-color: #AC9FBB;
       display: flex;
       flex-direction: column;
       align-items: center;
-      border-left: 1px solid rgb(200, 200, 200);
-      border-right: 1px solid rgb(200, 200, 200);
+      border-left: 1px solid rgba(193, 177, 211, 0.5);
       min-height: calc(85vh - 50px);
-      padding-bottom: 4rem;
+      margin-left: 20%;
+      margin-right: 15%;
+      /* box-shadow: 0 0 2px black; */
+}
+
+.page_content{
+      background-color: #AC9FBB;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border-left: 1px solid rgba(193, 177, 211, 0.5);
+      /* border-right: 1px solid rgb(200, 200, 200); */
+      min-height: calc(85vh - 50px);
       margin-left: 20%;
       margin-right: 15%;
       border-radius: 25px;
-  }
+}
+
+
 
  -b all-question
 
@@ -30,15 +46,17 @@ li a {
       font-size: 120%;
       font-weight: normal;
       text-decoration: none;
-      color:#539987;
+      /* color:#539987; */
 }
 
 li a:hover {
-      color:#52FFB8;
+      color:#539987;
 }
 
 .questions {
-      padding-left: 10%
+      padding-left: 5%;
+      padding-top: 2%;
+
 }
 
 .question_list {
@@ -46,6 +64,13 @@ li a:hover {
       display: block;
       flex-direction: column;
       list-style: none;
+
+}
+
+.q-content {
+      margin-left: 28px;
+      margin-right: 50px;
+
 }
 
 li span {
@@ -66,11 +91,12 @@ d:nth-child(2) {
 
 li {
       display: block;
-      border-top: 1px solid rgb(230, 230, 230);
+      border-top: 1px solid rgba(193, 177, 211, 0.5);
       padding: 10px;
 }
 
 .asked_date_author {
+      padding-bottom: 1%;
       padding-right: 5%;
       font-size: 80%;
       text-align:end;
@@ -214,6 +240,17 @@ h1{
       /* margin-bottom: 5px; */
       /* border-radius: 25px; */
       border-bottom: 20px solid #AC9FBB;
+}
+.questions {
+      padding-bottom: 15px;
+}
+
+.question_titles {
+      font-size:140%;
+}
+
+.question_links {
+      color: #444054;
 }
 
 /*

@@ -60,6 +60,7 @@ router.post('/', requireAuth, questionValidator, csrfProtection, asyncHandler(as
 router.get("/:id(\\d+)", csrfProtection, async (req, res) => {
     const questionId = parseInt(req.params.id, 10);
     const question = await Question.findByPk(questionId, { include: User });
+
     // console.log(question.title, question.content);
     const content = question.content;
 
@@ -74,7 +75,14 @@ router.get("/:id(\\d+)", csrfProtection, async (req, res) => {
     let persistObj = {};
     answers.forEach(answer => {
         if (answer.ScoringAnswers.length) {
-            persistObj[answer.id] = answer.ScoringAnswers[0].vote;
+            answer.ScoringAnswers.forEach(score => {
+                if (res.locals.user) {
+                    const loggedinUserId = res.locals.user.id;
+                    if (score.userId === loggedinUserId) {
+                        persistObj[answer.id] = score.vote;
+                    }
+                }
+            })
         }
     });
 
@@ -88,7 +96,7 @@ router.post("/:id(\\d+)/delete", requireAuth, asyncHandler(async (req, res) => {
 
     answers.forEach(ans => {
         // console.log(ans)
-        ScoringAnswer.destroy({ where: { answerId: ans.id }});
+        ScoringAnswer.destroy({ where: { answerId: ans.id } });
         ans.destroy();
     })
 

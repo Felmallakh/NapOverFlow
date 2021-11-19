@@ -1,7 +1,4 @@
-body{
-      background-color:rgb(125, 105, 151);
 
-}
 .cancel_button {
     display: flex;
     justify-content: center;
@@ -40,13 +37,12 @@ h2 {
     width: 25%;
     border-radius: 6px;
     box-shadow: 0 0 2px black;
-    margin: auto;
-    top: 50%;
-    left: 50%;
-    position: absolute;
-    transform: translate(-50%, -50%);
-    padding-top: 20px;
+    /* transform: translate(50%, 50%); */
+    margin-left: 570px;
+    padding-top: 15px;
     padding-bottom: 20px;
+    margin-bottom: 80px;
+    margin-top: 80px;
 }
 
 .sign_in_form input,
@@ -93,4 +89,18 @@ h2 {
 
 .links > a:hover {
     box-shadow: 0 0 3pt 2pt #AC9FBB;
+}
+
+
+.errors {
+    color: rgb(163, 66, 66);
+    font-size: 12px;
+}
+
+.errors > ul,li {
+    margin-right: 17px;
+}
+
+.errors > p {
+    margin-left: 45px;
 }
