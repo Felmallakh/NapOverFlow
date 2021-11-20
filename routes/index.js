@@ -6,7 +6,7 @@ const Op = require("sequelize").Op;
 
 /* GET home page. */
 router.get('/', asyncHandler(async(req, res, next) => {
-  res.render('index', { title: 'Nap-Overflow' });
+  res.render('index', { title: 'Nap Overflow' });
 }));
 
 router.get(
@@ -31,7 +31,7 @@ router.get(
       },
     });
 
-    res.render("search", { questions, searchTerm });
+    res.render("search", { questions, searchTerm, title:`Posts containing '${searchTerm}' - Nap Overflow` });
   })
 );
 

@@ -9,7 +9,7 @@ const { asyncHandler, csrfProtection } = require("./utils");
 
 router.get('/login', csrfProtection, (req, res) => {
   res.render('user-login', {
-    title: 'Login',
+    title: 'Login - Nap Overflow',
     csrfToken: req.csrfToken(),
   });
 });

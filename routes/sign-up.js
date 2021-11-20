@@ -60,7 +60,7 @@ const userValidators = [
 ];
 
 router.get('/', csrfProtection, (req, res) => {
-  res.render('sign-up', { csrfToken: req.csrfToken(), title: 'Sign-Up', create: {} });
+  res.render('sign-up', { csrfToken: req.csrfToken(), title: 'Sign Up - Nap Overflow', create: {} });
 });
 
 router.post('/', csrfProtection, userValidators, asyncHandler(async (req, res) => {

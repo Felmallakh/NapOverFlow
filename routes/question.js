@@ -29,12 +29,12 @@ const questionValidator = [
 
 
 router.get('/new', requireAuth, csrfProtection, (req, res) => {
-    res.render('new-question', { csrfToken: req.csrfToken(), title: 'Ask Question', question: {} });
+    res.render('new-question', { csrfToken: req.csrfToken(), title: 'Ask a Question - Nap Overflow', question: {} });
 });
 
 router.get('/', asyncHandler(async (req, res, next) => {
     const questions = await Question.findAll({ include: User, order: [["updatedAt", "DESC"]] });
-    res.render('questions-list', { title: 'All Questions', questions });
+    res.render('questions-list', { title: 'All Questions - Nap Overflow', questions });
 }))
 
 router.post('/', requireAuth, questionValidator, csrfProtection, asyncHandler(async (req, res) => {
@@ -52,7 +52,7 @@ router.post('/', requireAuth, questionValidator, csrfProtection, asyncHandler(as
         res.redirect(`/questions/${question.id}`);
     } else {
         const errors = validatorErrors.array().map(error => error.msg);
-        res.render('new-question', { csrfToken: req.csrfToken(), question, errors, title: 'Ask Question' });
+        res.render('new-question', { csrfToken: req.csrfToken(), question, errors, title: 'Ask a Question - Nap Overflow' });
     };
 }));
 
@@ -86,7 +86,7 @@ router.get("/:id(\\d+)", csrfProtection, async (req, res) => {
         }
     });
 
-    res.render("question", { question, content, answers, persistObj, csrfToken: req.csrfToken() });
+    res.render("question", { question, content, answers, persistObj, csrfToken: req.csrfToken(), title: `${question.title} - Nap Overflow` });
 });
 
 router.post("/:id(\\d+)/delete", requireAuth, asyncHandler(async (req, res) => {
