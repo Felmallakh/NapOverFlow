@@ -21,7 +21,10 @@ block content
                     form(action=`/questions/${question.id}/delete` method='post')
                       button.delete-q-button Delete
       div.answer-container
-        h2.answers_list_heading Answers for this question:
+        if answers.length > 0
+          h2.answers_list_heading Answers for this question:
+        else
+          h2.answers_list_heading There are no answers for this question. Zzz...
         if answers
           each answer in answers
             div.answer_section_answer(id=`answer-${answer.id}`)
@@ -49,10 +52,10 @@ block content
                             button(class=`downvote ${answer.id} make-button-red` id=`${answer.id}`) ▼
                           else
                             button(class=`downvote ${answer.id}` id=`${answer.id}`) ▼
-          if user
-            form.answer-form(action=`/questions/${question.id}/answers`, method='post')
-                input(type='hidden',name='_csrf',value=csrfToken)
-                p.ans Got an answer for this question?
-                textarea.form-box(style='resize: none',name ='answerContents')
-                button.submit(name='submitAnswer') Submit Answer
+        if user
+          form.answer-form(action=`/questions/${question.id}/answers`, method='post')
+              input(type='hidden',name='_csrf',value=csrfToken)
+              p.ans Got an answer for this question?
+              textarea.form-box(style='resize: none',name ='answerContents')
+              button.submit(name='submitAnswer') Submit Answer
   script(src="/javascripts/voting.js" type="module")

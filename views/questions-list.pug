@@ -1,12 +1,13 @@
 extends layout.pug
 
 append head
+  title All Questions - Nap Overflow
   link(rel="stylesheet" href="/stylesheets/questions.css")
   //- script(src="/javascripts/questions.js" type="module" defer)
 
 block content
   d.all_questions_page_content
-    h1#all_questions= title
+    h1#all_questions All Questions
     ul.question_list
       each question in questions
         li.questions

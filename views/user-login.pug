@@ -1,24 +1,25 @@
 extends layout.pug
 
 block content
-  div.sign_in_form_container
-    h2 Sign In
-    if errors
-        div.errors
-            p The following error occured:
-            ul
-                each error in errors
-                  li=error
-    form.sign_in_form(action='/login' method='post')
-        input(type="hidden", name="_csrf" value=csrfToken)
-        div.username
-            input(type='text' name='email' placeholder="Email Address")
-        div.password
-            input(type="password" name="password" placeholder="Password")
-        div.sub_cancel_buttons
-            div.submit_button
-                button(type="submit" value="submit") Sign In
-            div.cancel_button
-                a(href="/") Cancel
-        div.links
-            a(href='/sign-up') Don't have an account? Sign up
+  div.sign_in_page_content
+    div.sign_in_form_container
+        h2 Sign In
+        if errors
+            div.errors
+                p The following error occured:
+                ul
+                    each error in errors
+                        li=error
+        form.sign_in_form(action='/login' method='post')
+            input(type="hidden", name="_csrf" value=csrfToken)
+            div.username
+                input(type='text' name='email' placeholder="Email Address")
+            div.password
+                input(type="password" name="password" placeholder="Password")
+            div.sub_cancel_buttons
+                div.submit_button
+                    button(type="submit" value="submit") Sign In
+                div.cancel_button
+                    a(href="/") Cancel
+            div.links
+                a(href='/sign-up') Don't have an account? Sign up

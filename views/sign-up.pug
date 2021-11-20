@@ -1,29 +1,29 @@
 extends layout
 
 block content
-    div.sign_up_form_container
-        h2 Sign Up
-        if errors
-            div.errors
-                p The following error(s) occurred:
-                ul
-                  each error in errors
-                    li= error
-        form.sign_up_form(action='/sign-up', method='post')
-            input(type="hidden", name="_csrf" value=csrfToken)
-            div.displayName
-                input(type='text' name='displayName' placeholder="Display name")
-            div.email
-                input(type="email" name="email" placeholder="Email Address")
-            div.password
-                input(type="password" name="password" placeholder="Password")
-            div
-                input(type="password" name="confirmPassword" placeholder="Confirm Password")
-            div.sub_cancel_buttons
-                div.submit_button
-                    button(type="submit" value="submit") Sign Up
-                div.cancel_button
-                    a(href="/") Cancel
-            div.links
-                a(href='/login') Already have an account? Log in here.
-
+    div.sign_up_page_content
+        div.sign_up_form_container
+            h2 Sign Up
+            if errors
+                div.errors
+                    p The following error(s) occurred:
+                    ul
+                    each error in errors
+                        li= error
+            form.sign_up_form(action='/sign-up', method='post')
+                input(type="hidden", name="_csrf" value=csrfToken)
+                div.displayName
+                    input(type='text' name='displayName' placeholder="Display name")
+                div.email
+                    input(type="email" name="email" placeholder="Email Address")
+                div.password
+                    input(type="password" name="password" placeholder="Password")
+                div
+                    input(type="password" name="confirmPassword" placeholder="Confirm Password")
+                div.sub_cancel_buttons
+                    div.submit_button
+                        button(type="submit" value="submit") Sign Up
+                    div.cancel_button
+                        a(href="/") Cancel
+                div.links
+                    a(href='/login') Already have an account? Log in here.
