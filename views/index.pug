@@ -3,6 +3,13 @@ extends layout.pug
 append head
   //- add page specific styles by appending to the head
   link(rel="stylesheet" href="/stylesheets/index.css")
+  meta(name="title" property="og:title" content="Nap Overflow")
+  meta(property="og:type" content="Website")
+  meta(name="image" property="og:image" content="https://cdn.discordapp.com/attachments/919391399269515305/938572949777162330/project3.PNG")
+  meta(name="image" property="og:image:secure" content="https://cdn.discordapp.com/attachments/919391399269515305/938572949777162330/project3.PNG")
+  meta(name="description" property="og:description" content="A Stackoverflow clone a question and answer website related to nap’s.Technologies used: Javascript, React / Redux, PUG")
+  meta(name="author" content="Fady El Mallakh")
+  meta(name="publish_date" property="og:publish_date" content="2021-11-20")
   //- add page specific js
   script(src="/javascripts/index.js" type="module" defer)
 
