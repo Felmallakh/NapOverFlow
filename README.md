@@ -16,7 +16,16 @@
   <li>Answer previously asked questions</li>
   <li>Upvote/Downvote answers</li>
 </ul>
+## Technologies Used
 
+* Javascript
+* node.js
+* PostgreSQL
+* Sequelize
+* Express
+* React
+* Redux
+  
 <h2> Overall Structure </h2>
 <h4> Back end </h4>
 <p>Nap Overflow was built using JavaScript, utilizing a postgreSQL Database. Backend requests are RESTful, and associations are used to prefetch data in order to minimize SQL queries to the database.</p>
