@@ -2,6 +2,9 @@
 
 <h2> Summary: </h2>
 <h4> Is an application inspired by Stack Overflow built using JavaScript utilizing pug architecture. Nap Overflow allows users to: </h4>
+<img src="https://github.com/Felmallakh/NapOverFlow/blob/main/images/NOhomepage.PNG" />
+<img src="https://github.com/Felmallakh/NapOverFlow/blob/main/images/NOquestionspage.PNG" />
+<img src="https://github.com/Felmallakh/NapOverFlow/blob/main/images/NOquestionpage.PNG" />
 <br>
 <h3> Link to Live Application: <a href="https://nap-overflow.herokuapp.com/">Nap Overflow</a>
 <h3>
@@ -16,7 +19,7 @@
   <li>Answer previously asked questions</li>
   <li>Upvote/Downvote answers</li>
 </ul>
-## Technologies Used
+<h3>Technologies Used</h3>
 
 * Javascript
 * node.js
