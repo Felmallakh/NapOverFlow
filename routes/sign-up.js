@@ -72,7 +72,6 @@ router.post('/', csrfProtection, userValidators, asyncHandler(async (req, res) =
 
   if (validatorErrors.isEmpty()) {
     const hashedPassword = await hashPassword(password);
-    console.log(hashedPassword);
     newUser.hashedPassword = hashedPassword;
     await newUser.save();
     loginUser(req, res, newUser);

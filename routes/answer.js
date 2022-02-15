@@ -173,7 +173,6 @@ router.post("/answers/:id/downvote", asyncHandler(async (req, res) => {
     await decreaseScore(answer);
     res.json({ message: "downvote" });
   } else if (scoringAnswer.vote === true && scoringAnswer.userId === userId) {
-    console.log(scoringAnswer.vote);
     await scoringAnswer.destroy();
     // take previous score and downvote once
     await decreaseScore(answer);

@@ -9,7 +9,10 @@ module.exports = {
       Example:
       */
     return queryInterface.bulkInsert('Users', [
-      { displayName: 'McSleep', email: 'demo@demo.com', hashedPassword: '$2a$12$hiunTQk5sLFRYee9IBKPn.uwzXUGa4cSoV41Fd9eXDwbtnYAMbuoK', createdAt: new Date(), updatedAt: new Date() }
+      { displayName: 'McSleep', email: 'demo@demo.com', hashedPassword: '$2a$12$hiunTQk5sLFRYee9IBKPn.uwzXUGa4cSoV41Fd9eXDwbtnYAMbuoK', createdAt: new Date(), updatedAt: new Date() },
+      { displayName: 'Marnie', email: 'marnie@aa.com', hashedPassword: '$2a$12$hiunTQk5sLFRYee9IBKPn.uwzXUGa4cSoV41Fd9eXDwbtnYAMbuoK', createdAt: new Date(), updatedAt: new Date() },
+      { displayName: 'Billy', email: 'billy@aa.com', hashedPassword: '$2a$12$hiunTQk5sLFRYee9IBKPn.uwzXUGa4cSoV41Fd9eXDwbtnYAMbuoK', createdAt: new Date(), updatedAt: new Date() },
+      { displayName: 'Ashley', email: 'ashley@aa.com', hashedPassword: '$2a$12$hiunTQk5sLFRYee9IBKPn.uwzXUGa4cSoV41Fd9eXDwbtnYAMbuoK', createdAt: new Date(), updatedAt: new Date() }
     ], {});
   },
 
