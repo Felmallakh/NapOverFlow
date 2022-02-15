@@ -33,7 +33,7 @@ router.get('/new', requireAuth, csrfProtection, (req, res) => {
 });
 
 router.get('/', asyncHandler(async (req, res, next) => {
-    const questions = await Question.findAll({ include: User, order: [["updatedAt", "DESC"]] });
+    const questions = await Question.findAll({ include: User, order: [["updatedAt", "ASC"]] });
     res.render('questions-list', { title: 'All Questions - Nap Overflow', questions });
 }))
 
@@ -66,7 +66,8 @@ router.get("/:id(\\d+)", csrfProtection, async (req, res) => {
 
     const answers = await Answer.findAll({
         where: { questionId },
-        include: [User, ScoringAnswer]
+        include: [User, ScoringAnswer],
+        order: [['score', 'DESC']]
     });
     // console.log(answers);
 
