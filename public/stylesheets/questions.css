@@ -295,14 +295,14 @@ h1{
 
 .upvote, .downvote {
       color:#AC9FBB;
-      margin: 3px;
+      margin: 1px;
 }
 
 #score-text {
       position:relative;
       top: 1%;
       right: 0%;
-      /* margin-right: 7px; */
+      margin: 10px 0px;
       font-size: 22px;
 }
 
