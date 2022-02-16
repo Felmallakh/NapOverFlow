@@ -38,7 +38,7 @@ block content
                           if answer.userId==user.id
                             form(action=`/answers/${answer.id}/delete` method="POST")
                             button.delete-button(id=`${answer.id}`) Delete
-                    div#scoring Score
+                    div#scoring
                       if user
                         form(action=`/answers/${answer.id}/upvote` method="POST")
                           if persistObj[answer.id]

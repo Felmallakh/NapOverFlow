@@ -204,7 +204,8 @@ h1{
       width: fit-content;
       display: flex;
       flex-direction: column;
-      align-items:flex-start;
+      align-items: flex-start;
+      justify-content: center;
       gap: .25rem;
       margin-right: .5rem;
       font-size: 0.9rem;
@@ -294,29 +295,40 @@ h1{
 }
 
 .upvote, .downvote {
-      color:#AC9FBB;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      color: gray;
+      box-shadow: none;
       margin: 1px;
+      font-size: 30px;
+}
+
+.upvote:hover, .downvote:hover{
+      text-shadow: 0px 0px 5px black;
+      background-color: transparent;
+}
+.upvote:hover{
+      color: green;
+}
+.downvote:hover{
+      color: rgba(255, 0, 0, 0.8);
 }
 
 #score-text {
       position:relative;
       top: 1%;
       right: 0%;
-      margin: 10px 0px;
+      color: gray;
       font-size: 22px;
 }
 
 .make-button-green {
-      border: 2px solid lightgreen;
-      color: lightgreen;
-      box-shadow: 0 0 10px gray;
+      color: green;
 }
 
 .make-button-red {
-      border: 2px solid rgba(255, 0, 0, 0.8);
       color: rgba(255, 0, 0, 0.8);
-      box-shadow: 0 0 10px gray;
-
 }
 
 .delete-button{
