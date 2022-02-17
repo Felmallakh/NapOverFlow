@@ -54,6 +54,8 @@ a.question_links {
 
 li:hover {
   background-color: #539987;
+  border-radius: 5px;
+
 }
 
 .question_list {
