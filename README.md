@@ -1,4 +1,4 @@
-# Nap OverFlow (Group Project) 
+# Nap Overflow (Group Project) 
 Live Site: https://nap-overflow.herokuapp.com/
 
 An application inspired by Stack Overflow built using JavaScript and utilizing pug architecture, Nap Overflow allows users to:
