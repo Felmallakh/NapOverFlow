@@ -151,7 +151,7 @@ footer > a:hover {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  font-size: 10px;
+  font-size: 10px; 
 }
 
 .developers > div {
