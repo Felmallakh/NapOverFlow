@@ -5,7 +5,7 @@ const { TooManyRequests } = require('http-errors');
 const db = require('../db/models');
 const { csrfProtection, asyncHandler } = require('./utils');
 
-const router = express.Router();
+const router = express.Router(); 
 
 const increaseScore = async (answer) => {
   let currentScore = answer.dataValues.score;
